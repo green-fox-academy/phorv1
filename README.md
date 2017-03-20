@@ -1,2 +1,1 @@
-[Link](ttps://github.com/greenfox-academy/eagles-syllabus)
-
+[Link](https://github.com/greenfox-academy/eagles-syllabus)
