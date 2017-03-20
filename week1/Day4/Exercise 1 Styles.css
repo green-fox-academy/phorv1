@@ -1,0 +1,10 @@
+.box {
+  margin: 20px;
+  padding: 20px;
+  width: 346px;
+  height: 132px;
+  border: 6px solid rgb(125,206,148);
+  background-color: rgb(14,145,161);
+  font-size: 36px;
+  color: rgb(0,85,102);
+}

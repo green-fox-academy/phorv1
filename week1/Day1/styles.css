@@ -1,0 +1,52 @@
+body {
+  margin: 0 auto;
+  color: rgba(0,0,0,.8);
+  font-family: 'Merriweather', serif;
+}
+
+img {
+  width: 100%;
+}
+
+article {
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.58;
+  letter-spacing: -.004em;
+  font-weight: 400;
+  max-width: 720px;
+}
+
+h1, h2 {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 900;
+  color: rgba(0,0,0,100);
+  margin-top: 31px;
+  margin-bottom: 0px;
+  margin-left: -2px;
+  line-height: 1.04;
+  letter-spacing: -.028em;
+}
+
+h2 {
+  color: rgba(192,192,192,2);
+  font-weight:inherit;
+  font-size: 23px;
+  line-height: 1.22;
+  letter-spacing: -.022em;
+  margin-top: 5px;
+  margin-bottom: 22px;
+  max-width: 630px;
+  margin: 0 auto;
+}
+
+h5 {
+  text-align: center;
+  letter-spacing: 1em;
+}

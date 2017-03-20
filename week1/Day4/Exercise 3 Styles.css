@@ -1,0 +1,22 @@
+.bigbox, .box {
+  width: 346px;
+  height: 240px;
+  font-size: 36px;
+  color: white;
+  border: 16px solid rgb(66,133,244);
+  margin: 1 1 4 1;
+}
+
+.north, .east, .south, .west{
+  height: 80px;
+  text-align: center;
+  padding-top: 40;
+}
+
+.north, .east {
+    background-color: rgb(230,118,118);
+}
+
+.south, .west {
+    background-color: rgb(169,230,230);
+}
