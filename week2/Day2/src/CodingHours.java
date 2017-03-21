@@ -8,7 +8,6 @@ public class CodingHours {
         float totalHours = (avgWorkHours * semesterLenghts);
         float percentage = (totalCoded / totalHours) * 100;
         System.out.println("Hours spent with coding by the attendee: " + totalCoded);
-
         System.out.println("Percentage of coded hours: " + percentage + "%");
     }
 }
