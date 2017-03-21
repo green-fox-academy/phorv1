@@ -1,55 +1,56 @@
 public class VariableMutation {
     public static void main(String[] args) {
-        int a = 3;
-            System.out.println(a + 10);
+        double a = 24;
+        int out = 0;
+        if (a % 2 == 0){
+            System.out.println(out + 1);
+        }
+
+        int b = 13;
+        String out2 = "";
+        if (b >= 10 && b <= 20) {
+            out2 = "Sweet!";
+            System.out.println(out2);
+        }
+        else if (10 > b) {
+            out2 = "More'";
+            System.out.println(out2);
+        }
+        else if (20 < b) {
+            out2 = "Less!'";
+            System.out.println(out2);
+        }
 
 
-        int b = 100;
-             System.out.println(b - 7);
+        int c = 123;
+        int credits = 100;
+        boolean isBonus = (false);
+
+        if (credits >= 50 && isBonus == false) {
+            c -= 2;
+        }
+         else if (credits < 50 && isBonus == false) {
+            c -= 1;
+        }
+         else if (isBonus == true) {
+            c = c;
+        }
+        System.out.println(c);
 
 
-        int c = 44;
-             System.out.println(c * 2);
+        int d = 8;
+        int time = 120;
+        String out3 = "";
+        if (d % 4 == 0 && time <= 200) {
+            out3 = "check";
+        }
 
-
-        int d = 125;
-        System.out.println(d / (d * 5));
-
-
-        int e = 8;
-        System.out.println(e * e * e);
-
-
-        int f1 = 123;
-        int f2 = 345;
-        boolean print1 = (f1 > f2);
-        System.out.println(print1);
-
-
-        int g1 = 350;
-        int g2 = 200;
-        boolean print2 = (g2 * 2) > g1;
-        System.out.println(print2);
-
-
-
-        long h = 1357988018575474l;
-        boolean print3 = ((h % 11) == 0);
-        System.out.println(print3);
-
-
-        int i1 = 10;
-        int i2 = 3;
-        boolean print4 = ( i1 > (i2 * i2) || i1 < (i2 * i2 * i2));
-        System.out.println(print4);
-
-
-        int j = 1521;
-        boolean print5 = ((j % 3) == 0 || (j % 5) == 0);
-        System.out.println(print5);
-
-
-        String k = "Apple";
-        System.out.println(k + k + k + k);
+        else if (time > 200) {
+            out3 = "Time out";
+        }
+        else {
+            out3 = "Run Forest Run";
+        }
+        System.out.println(out3);
     }
 }
