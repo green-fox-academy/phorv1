@@ -11,19 +11,18 @@ public class Ex29 {
                     System.out.print(" ");
                 }
             }
-            for (int j = 0; j <= i * 2; j++) {
+            for (int g = 0; g <= i * 2; g++) {
                 System.out.print("*");
             }
             System.out.println();
         }
         for (int i = 0; i < number; i++) {
-            for (int k = i; k < number*2; k++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print(" ");
+            }
+            for (int g = i * 2; g < number * 2 - 3; g++) {
                 System.out.print("*");
             }
-            for (int j = 0; j <= i; j++) {
-            }
-            System.out.print(" ");
-
             System.out.println();
         }
     }
