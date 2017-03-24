@@ -12,7 +12,7 @@ public class anagram {
         String copyOfSecondEntry = secondEntry.replaceAll("\\s", "").toLowerCase();
         len1 = copyOfFirstEntry.length();
         len2 = copyOfSecondEntry.length();
-                if(len1 == len2) {
+        if(len1 == len2) {
             len = len1;
             for(i=0; i<len; i++) {
                 found = 0;
