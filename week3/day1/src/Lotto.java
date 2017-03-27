@@ -34,11 +34,11 @@ public class Lotto {
                     return o2.getValue().compareTo(o1.getValue());
                 }
             });
-
             for (Entry<String, Integer> entry : list) {
-                System.out.println(entry.getKey() + ": " + entry.getValue());
+                if (entry.getValue() >= 192) {
+                    System.out.println(entry.getKey() + ": " + entry.getValue());
+                }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
