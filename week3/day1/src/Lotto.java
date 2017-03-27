@@ -33,13 +33,15 @@ public class Lotto {
                     return o2.getValue().compareTo(o1.getValue());
                 }
             });
+
+            int counter = 0;
             for (Entry<String, Integer> entry : list) {
-                /*if (entry.getValue() >= 192) {
+                if (counter < 5){
                     System.out.println(entry.getKey() + ": " + entry.getValue());
-                }*/
-                Map<Integer, String> reverseMap = new HashMap<Integer, String>();
-                reverseMap.put(entry.getValue(), entry.getKey());
-                System.out.println(reverseMap);
+                } else {
+                    break;
+                }
+                counter++;
             }
         } catch (IOException e) {
             e.printStackTrace();
