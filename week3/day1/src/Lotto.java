@@ -25,7 +25,6 @@ public class Lotto {
                     }
                 }
             }
-
             Set<Entry<String, Integer>> set = keyMap.entrySet();
             List<Entry<String, Integer>> list = new ArrayList<Entry<String, Integer>>(
                     set);
@@ -35,9 +34,12 @@ public class Lotto {
                 }
             });
             for (Entry<String, Integer> entry : list) {
-                if (entry.getValue() >= 192) {
+                /*if (entry.getValue() >= 192) {
                     System.out.println(entry.getKey() + ": " + entry.getValue());
-                }
+                }*/
+                Map<Integer, String> reverseMap = new HashMap<Integer, String>();
+                reverseMap.put(entry.getValue(), entry.getKey());
+                System.out.println(reverseMap);
             }
         } catch (IOException e) {
             e.printStackTrace();
