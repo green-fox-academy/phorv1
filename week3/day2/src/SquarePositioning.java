@@ -4,18 +4,18 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class FillWithRectangle {
+public class SquarePositioning {
 
     public static void mainDraw(Graphics graphics){
-        graphics.setColor(Color.GRAY);
-        graphics.fillRect(35, 15, 15, 30);
-        graphics.setColor(Color.GREEN);
-        graphics.fillRect(75, 60, 25, 40);
-        graphics.setColor(Color.RED);
-        graphics.fillRect(90, 85, 54, 12);
-        graphics.setColor(Color.BLACK);
-        graphics.fillRect(150, 250, 52, 17);
+        square(10,10,graphics);
+        square(70,70,graphics);
+        square(10,120,graphics);
 
+    }
+
+    public static void square(int x, int y, Graphics graphics) {
+        graphics.setColor(Color.BLUE);
+        graphics.fillRect(x, y, 50, 50);
     }
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
