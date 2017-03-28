@@ -11,7 +11,7 @@ public class PurpleSteps {
     }
 
     public static void purpleSquares(int position, int size, Graphics graphics) {
-        int numberofsquares = 4;
+        int numberofsquares = 19;
         for (int i = position; i < position + size * numberofsquares; i+=size) {
         graphics.setColor(new Color (128,0,128));
         graphics.fillRect(i,i,size,size);
