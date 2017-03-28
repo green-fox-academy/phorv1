@@ -10,18 +10,18 @@ public class EverythingGoesCentre {
         // the x and y coordinates of the line's starting point
         // and draws a line from that point to the center of the canvas.
         // fill the canvas with lines from the edges, every 20 px, to the center.
-        lining(0, 0, graphics);
+        lining(graphics);
 
     }
 
-    public static void lining(int x, int y, Graphics graphics) {
+    public static void lining(Graphics graphics) {
         int step = 20;
+        graphics.setColor(Color.BLACK);
         for (int i = 0; i < 320; i += step) {
-                graphics.setColor(Color.BLACK);
-            for (int j = 0; j < 320; j +=step) {
-                graphics.drawLine(j, i, 150, 150);
-
-            }
+                graphics.drawLine(i, 0, 150, 150);
+                graphics.drawLine(0, i, 150, 150);
+                graphics.drawLine(i, 320, 150, 150);
+                graphics.drawLine(320, i, 150, 150);
         }
     }
 
