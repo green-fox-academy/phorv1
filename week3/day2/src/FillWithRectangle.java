@@ -4,16 +4,23 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class SquareInCentre {
+public class FillWithRectangle {
 
     public static void mainDraw(Graphics graphics){
         graphics.setColor(Color.BLUE);
-        graphics.fillRect(145, 145, 10, 10);
+        graphics.fillRect(10, 20, 20, 25);
+        graphics.setColor(Color.GRAY);
+        graphics.fillRect(35, 15, 15, 30);
+        graphics.setColor(Color.GREEN);
+        graphics.fillRect(75, 60, 25, 40);
+        graphics.setColor(Color.RED);
+        graphics.fillRect(90, 85, 54, 12);
+
     }
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
-        jFrame.setSize(new Dimension(300, 300));
+        jFrame.setSize(new Dimension(320, 343));
         jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         jFrame.add(new ImagePanel());
         jFrame.setLocationRelativeTo(null);
