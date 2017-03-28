@@ -1,30 +1,26 @@
 import javax.swing.*;
+
 import java.awt.*;
-import java.util.Random;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class RainbowBoxes {
+public class PurpleSteps {
 
     public static void mainDraw(Graphics graphics){
-        sizeColor(20,56789, graphics);
+        purpleSquares(10, 10, graphics);
     }
 
-    public static void sizeColor(int size, int color, Graphics graphics) {
-        int xx = 300;
-        int random = color;
-
-        while (xx > size){
-            graphics.setColor(new Color(random));
-            graphics.fillRect(150 - xx / 2, 150 - xx/ 2, xx, xx);
-            xx -= 20;
-            random = (int) (Math.random() * 16777215);
+    public static void purpleSquares(int position, int size, Graphics graphics) {
+        int numberofsquares = 4;
+        for (int i = position; i < position + size * numberofsquares; i+=size) {
+        graphics.setColor(new Color (128,0,128));
+        graphics.fillRect(i,i,size,size);
+        graphics.setColor(Color.BLACK);
+        graphics.drawRect(i, i, size, size);
         }
-
-        graphics.setColor (new Color(color));
-        graphics.fillRect(150 - size / 2, 150 - size / 2, size, size);
     }
 
+    //    Don't touch the code below
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
         jFrame.setSize(new Dimension(320, 343));
@@ -41,4 +37,5 @@ public class RainbowBoxes {
 
         }
     }
+
 }
