@@ -1,7 +1,7 @@
 
 public class Power {
   public static void main(String[] args) {
-    System.out.println(power(10,3));
+    System.out.println(power(10,4));
   }
 
   public static int power (int n, int p) {
