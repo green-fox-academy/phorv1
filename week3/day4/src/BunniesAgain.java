@@ -11,7 +11,7 @@ public class BunniesAgain {
     } else {
       if (n % 2 == 0) {
         sum = 2 + bunnies(n-1);
-      } else if (n % 2 != 0) {
+      } else {
         sum = 3 + bunnies(n-1);
       }
       return sum;
