@@ -11,7 +11,13 @@ public class TrianglePoject {
   public static void drawTriangle(Graphics graphics, int x, int y, int l, int h) {
     int[] first = {x, x + l, x - l};
     int[] second = {y , y - h * 2 , y - h * 2};
+    graphics.setColor(new Color(random()));
     graphics.drawPolygon(first, second, 3);
+  }
+
+  public static int random() {
+    int color = (int)(Math.random() * 16777216);
+    return color;
   }
 
   public static void leftTri(Graphics graphics, int x, int y, int l, int h) {
