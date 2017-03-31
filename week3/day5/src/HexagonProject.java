@@ -31,9 +31,6 @@ public class HexagonProject {
     }
   }
 
-  /*public static void smallerfractals (Graphics graphics, int j, int i, int l, int h) {
-
-  }*/
   public static void main(String[] args) {
 
     JFrame jFrame = new JFrame("Drawing");

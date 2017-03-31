@@ -28,13 +28,10 @@ public class TrianglePoject {
       leftTri(graphics, x, y, l / 2, h / 2);
       leftTri(graphics, x - l / 2, y - h , l / 2, h / 2);
       leftTri(graphics, x + l / 2, y - h , l / 2, h / 2);
-
     }
-
   }
 
   public static void main(String[] args) {
-
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(600, 650));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
