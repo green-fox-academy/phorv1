@@ -34,6 +34,7 @@ public class Dice {
     Dice myDice = new Dice();
     myDice.getCurrent();
     myDice.roll();
+
     for (int i = 0; i <= 5; i++) {
       while (myDice.getCurrent(i) < 6){
         myDice.reroll(i);
