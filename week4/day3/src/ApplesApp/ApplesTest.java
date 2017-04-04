@@ -7,7 +7,7 @@ public class ApplesTest {
   @Test
   public void getApple() throws Exception {
     Apples apple = new Apples("apple");
-    assertEquals("apple", apple.getApple());
+    assertEquals("green apple", apple.getApple());
   }
 
 }
