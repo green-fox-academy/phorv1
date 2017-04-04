@@ -53,6 +53,7 @@ public class Garden {
     this.howManyToWater = 0;
     stateOfGarden();
   }
+
   public void stateOfGarden(){
     for (int i = 0; i < this.flowers.size(); i++) {
       System.out.print("The " + this.flowers.get(i).color + " Flower");
