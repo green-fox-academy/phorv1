@@ -13,7 +13,7 @@ class ExtensionTest {
 
   @Test
   void testAdd_2and3is5() {
-    assertEquals(5, extension.add(2, 3));
+    assertEquals(4, extension.add(1, 3));
   }
 
   @Test
@@ -23,7 +23,7 @@ class ExtensionTest {
 
   @Test
   void testMaxOfThree_first() {
-    assertEquals(5, extension.maxOfThree(5, 4, 3));
+    assertEquals(7, extension.maxOfThree(7, 4, 6));
   }
 
   @Test
@@ -33,12 +33,12 @@ class ExtensionTest {
 
   @Test
   void testMedian_four() {
-    assertEquals(5, extension.median(Arrays.asList(7,5,3,5)));
+    assertEquals(25, extension.median(Arrays.asList(10,20,40,30)));
   }
 
   @Test
   void testMedian_five() {
-    assertEquals(3, extension.median(Arrays.asList(1,2,3,4,5)));
+    assertEquals(2, extension.median(Arrays.asList(1,2,2,4,5)));
   }
 
   @Test
@@ -53,7 +53,7 @@ class ExtensionTest {
 
   @Test
   void testTranslate_bemutatkozik() {
-    assertEquals("bevemuvutavatkovozivik", extension.translate("bemutatkozik"));
+    assertEquals("mevegeveszevem", extension.translate("megeszem"));
   }
 
   @Test
