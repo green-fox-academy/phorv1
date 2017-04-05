@@ -41,7 +41,8 @@ public class SumTest {
 
   @Test
   public void withNull() throws Exception {
-    list = null;
-    assertEquals(null, list);
+    List<Integer> list1 = null;
+    Sum sum2 = new Sum();
+    assertEquals(0, sum2.getSumAll(list1));
   }
 }
