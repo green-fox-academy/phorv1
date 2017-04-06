@@ -33,14 +33,12 @@ public class Extension {
   }
 
   String translate(String hungarian) {
-    String teve = hungarian;
-    int length = teve.length();
-    for (int i = 0; i < length; i++) {
-      char c = teve.charAt(i);
+    String teve = new String();
+    for (char c : hungarian.toCharArray()) {
       if (isVowel(c)) {
-        teve = String.join(c + "v" + c, teve.split(""+c));
-        i+=2;
-        length+=2;
+        teve = teve + c + "v" + c;
+      } else {
+        teve = teve + c;
       }
     }
     return teve;
