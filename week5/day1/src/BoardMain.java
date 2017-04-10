@@ -4,34 +4,39 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Board extends JComponent implements KeyListener {
+public class BoardMain extends JComponent implements KeyListener {
 
-  int testBoxX;
-  int testBoxY;
 
-  public Board() {
-    testBoxX = 300;
-    testBoxY = 300;
+  int canvasSize = 720;
+  int tileSize = 71;
+  int heroStartX = 0;
+  int heroStartY = 0;
 
-    // set the size of your draw board
-    setPreferredSize(new Dimension(720, 720));
+  public BoardMain() {
+    setPreferredSize(new Dimension(canvasSize, canvasSize));
     setVisible(true);
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-    graphics.fillRect(testBoxX, testBoxY, 100, 100);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
-    PositionedImage image = new PositionedImage("assets/boss.png", 300, 300);
+
+    for (int i = 0; i < canvasSize - tileSize; i += tileSize) {
+      for (int j = 0; j < canvasSize - tileSize; j += tileSize) {
+        PositionedImage image = new PositionedImage("assets/floor.png", i, j);
+        image.draw(graphics);
+      }
+    }
+    PositionedImage image = new PositionedImage("assets/hero-down.png", heroStartX, heroStartY);
     image.draw(graphics);
   }
 
   public static void main(String[] args) {
     // Here is how you set up a new window and adding our board to it
     JFrame frame = new JFrame("RPG Game");
-    Board board = new Board();
+    BoardMain board = new BoardMain();
     frame.add(board);
     frame.setVisible(true);
 
@@ -60,13 +65,13 @@ public class Board extends JComponent implements KeyListener {
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= 100;
+      heroStartY -= tileSize;
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      testBoxY += 100;
+      heroStartY += tileSize;
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      testBoxX -= 100;
+      heroStartX -= tileSize;
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      testBoxX += 100;
+      heroStartX += tileSize;
     }
     // and redraw to have a new picture with the new coordinates
     invalidate();
