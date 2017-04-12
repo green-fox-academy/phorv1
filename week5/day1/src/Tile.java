@@ -1,45 +1,49 @@
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
 import java.util.List;
 
-public class Tile {
-  int tileSize = 71;
-  String[][] wallPosition = new String[10][10];
-  Path paths;
+public class Tile extends BoardMain {
+  int tileSize;
+  int posX;
+  int posY;
+  String[][] fields = new String[10][10];
+  Path walls;
 
-  public void paintWall(String levelPath) {
-    this.paths = Paths.get("assets/wallposition.csv");
+  public void fillFields(String levelPath) {
+    this.walls = Paths.get(levelPath);
     try {
-      List<String> lines = Files.readAllLines(paths);
+      List<String> lines = Files.readAllLines(walls);
       for (int i = 0; i < lines.size(); i++) {
         String[] row = lines.get(i).split(";");
-        wallPosition[i] = row;
+        fields[i] = row;
       }
     } catch (Exception e) {
     }
   }
 
+  public Tile() {
+  }
+
   public boolean isWall(int x, int y) {
-    if ((wallPosition[x][y]).equals("1")) {
+    if ((fields[x][y]).equals("1")) {
       return true;
     } else {
       return false;
     }
   }
-  
+
   public void paintTile(Graphics graphics) {
+    tileSize = 71;
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (!isWall(i, j)) {
-          PositionedImage image = new PositionedImage("assets/floor.png", j * tileSize, i * tileSize);
+          GameObject image = new GameObject("assets/floor.png", i * tileSize, j * tileSize);
           image.draw(graphics);
         } else {
-          PositionedImage image = new PositionedImage("assets/wall.png", j * tileSize, i * tileSize);
+          GameObject image = new GameObject("assets/wall.png", i * tileSize, j * tileSize);
           image.draw(graphics);
         }
       }
