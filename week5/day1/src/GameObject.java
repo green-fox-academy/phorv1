@@ -13,15 +13,14 @@ public class GameObject {
   }
 
 
-  public GameObject(String filename, int posX, int posY) {
+  public GameObject(BufferedImage image, int posX, int posY) {
     this.posX = posX;
     this.posY = posY;
-    try {
-      image = ImageIO.read(new File(filename));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    setImage(image);
+  }
 
+  protected void setImage(BufferedImage image) {
+    this.image = image;
   }
 
   public void draw(Graphics graphics) {

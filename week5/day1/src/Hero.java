@@ -4,26 +4,26 @@ public class Hero extends Character {
   int tileSize = 71;
 
   public Hero(int posX, int posY) {
-    super("assets/hero-down.png", posX, posY);
+    super(ImageLoader.getInstance().HERO_DOWN, posX, posY);
   }
 
   public void moveUp() {
     this.posY -= tileSize;
-    setImage("assets/hero-up.png");
+    setImage(ImageLoader.getInstance().HERO_UP);
   }
   public void moveDown() {
     this.posY += tileSize;
-    setImage("assets/hero-down.png");
+    setImage(ImageLoader.getInstance().HERO_DOWN);
   }
 
   public void moveLeft() {
     this.posX -= tileSize;
-    setImage("assets/hero-left.png");
+    setImage(ImageLoader.getInstance().HERO_LEFT);
   }
 
   public void moveRight() {
     this.posX += tileSize;
-    setImage("assets/hero-right.png");
+    setImage(ImageLoader.getInstance().HERO_RIGHT);
   }
 }
 
