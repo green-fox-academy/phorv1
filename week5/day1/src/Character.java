@@ -8,4 +8,7 @@ public class Character extends GameObject{
   public Character(BufferedImage image, int posX, int posY) {
     super(image, posX, posY);
   }
+
+  public Character() {
+  }
 }

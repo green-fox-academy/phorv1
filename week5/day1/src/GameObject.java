@@ -29,11 +29,4 @@ public class GameObject {
     }
   }
 
-  void setImage(String filename) {
-    try {
-      image = ImageIO.read(new File(filename));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
 }
