@@ -1,11 +1,10 @@
-
 import java.awt.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Tile extends BoardMain {
+public class Area extends BoardMain {
   int tileSize;
   String[][] fields = new String[10][10];
   Path walls;
@@ -22,10 +21,10 @@ public class Tile extends BoardMain {
     }
   }
 
-  public Tile() {
+  public Area() {
   }
 
-  public boolean isTile(int x, int y) {
+  public boolean isFloor(int x, int y) {
     if ((fields[x][y]).equals("0")) {
       return true;
     } else {
@@ -34,10 +33,10 @@ public class Tile extends BoardMain {
   }
 
   public void paintTile(Graphics graphics) {
-    tileSize = 71;
+    tileSize = 72;
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        if (isTile(i, j)) {
+        if (isFloor(i, j)) {
           GameObject image = new GameObject(ImageLoader.getInstance().FLOOR, i * tileSize, j * tileSize);
           image.draw(graphics);
         } else {
