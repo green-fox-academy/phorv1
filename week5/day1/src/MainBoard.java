@@ -16,7 +16,6 @@ public class MainBoard extends JComponent implements KeyListener {
   Area board;
   Hero hero;
   List<GameCharacter> listCharacter;
-  List<Skeleton> listSkeleton;
   Skeleton skeleton;
   Boss boss;
 
@@ -37,7 +36,6 @@ public class MainBoard extends JComponent implements KeyListener {
   public void createSkeletons() {
     int numberOfSkeletons = 2 + (int) (Math.random() * 3);
     System.out.println(numberOfSkeletons);
-    listSkeleton = new ArrayList<>();
     for (int i = 0; i < numberOfSkeletons; i++) {
       int randomX = (int) (Math.random() * MAP_COLUMN);
       int randomY = (int) (Math.random() * MAP_ROW);
@@ -48,7 +46,6 @@ public class MainBoard extends JComponent implements KeyListener {
       }
       skeleton = new Skeleton(randomX, randomY);
       System.out.println(skeleton.getPosX() + "   " + skeleton.getPosY());
-      listSkeleton.add(skeleton);
       listCharacter.add(skeleton);
     }
   }
@@ -58,10 +55,8 @@ public class MainBoard extends JComponent implements KeyListener {
     super.paint(graphics);
 
     board.paintTile(graphics);
-    hero.draw(graphics);
-    boss.draw(graphics);
-    for (Skeleton skeleton : listSkeleton) {
-      skeleton.draw(graphics);
+    for (GameCharacter character : listCharacter) {
+      character.draw(graphics);
     }
   }
 
