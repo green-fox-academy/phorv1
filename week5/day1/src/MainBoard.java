@@ -8,8 +8,8 @@ import java.util.List;
 public class MainBoard extends JComponent implements KeyListener {
   final static int TILE_SIZE = 72;
   final static String FLOOR_REP = "0";
-  final static int MAP_ROW = 10;
-  final static int MAP_COLUMN = 10;
+  final static int MAP_ROW = 3;
+  final static int MAP_COLUMN = 3;
   final static int CANVAS_WIDTH = MAP_COLUMN * TILE_SIZE;
   final static int CANVAS_HEIGHT = MAP_ROW * TILE_SIZE;
 
@@ -28,26 +28,41 @@ public class MainBoard extends JComponent implements KeyListener {
     listCharacter = new ArrayList<>();
     hero = new Hero(0, 0);
     listCharacter.add(hero);
-    boss = new Boss(1, 1);
-    listCharacter.add(boss);
     createSkeletons();
+    createBoss();
   }
+
+  public void createBoss() {
+    int[] randomXY = generateValidRandomXY();
+    boss = new Boss(randomXY[0], randomXY[1]);
+    listCharacter.add(boss);
+  }
+
 
   public void createSkeletons() {
     int numberOfSkeletons = 2 + (int) (Math.random() * 3);
     System.out.println(numberOfSkeletons);
     for (int i = 0; i < numberOfSkeletons; i++) {
-      int randomX = (int) (Math.random() * MAP_COLUMN);
-      int randomY = (int) (Math.random() * MAP_ROW);
-      while (!board.isFloorAtPosition(randomX, randomY)
-              || isThereCharacterOnTile(randomX,randomY)) {
-        randomX = (int) (Math.random() * MAP_COLUMN);
-        randomY = (int) (Math.random() * MAP_ROW);
-      }
-      skeleton = new Skeleton(randomX, randomY);
-      System.out.println(skeleton.getPosX() + "   " + skeleton.getPosY());
+      int[] randomXY = generateValidRandomXY();
+      skeleton = new Skeleton(randomXY[0], randomXY[1]);
       listCharacter.add(skeleton);
     }
+  }
+
+  private int[] generateValidRandomXY() {
+    int[] validXY = new int[2];
+    int randomX;
+    int randomY;
+
+    do {
+      randomX = (int) (Math.random() * MAP_COLUMN);
+      randomY = (int) (Math.random() * MAP_ROW);
+    } while (!board.isFloorAtPosition(randomX, randomY)
+            || isThereCharacterOnTile(randomX,randomY));
+    validXY[0] = randomX;
+    validXY[1] = randomY;
+    return validXY;
+
   }
 
   @Override
