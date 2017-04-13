@@ -10,8 +10,11 @@ public class MainBoard extends JComponent implements KeyListener {
   final static String FLOOR_REP = "0";
   final static int MAP_ROW = 10;
   final static int MAP_COLUMN = 10;
-  final static int CANVAS_WIDTH = MAP_COLUMN * TILE_SIZE;
+  final static int HUD_WIDTH = TILE_SIZE;
+  final static int HUD_HEIGHT = TILE_SIZE * MAP_ROW;
+  final static int CANVAS_WIDTH = MAP_COLUMN * TILE_SIZE + HUD_WIDTH;
   final static int CANVAS_HEIGHT = MAP_ROW * TILE_SIZE;
+
 
   Area board;
   Hero hero;
@@ -58,7 +61,7 @@ public class MainBoard extends JComponent implements KeyListener {
       randomX = (int) (Math.random() * MAP_COLUMN);
       randomY = (int) (Math.random() * MAP_ROW);
     } while (!board.isFloorAtPosition(randomX, randomY)
-            || isThereCharacterOnTile(randomX,randomY));
+            || isThereCharacterOnTile(randomX, randomY));
     validXY[0] = randomX;
     validXY[1] = randomY;
     return validXY;
@@ -73,13 +76,25 @@ public class MainBoard extends JComponent implements KeyListener {
     for (GameCharacter character : listCharacter) {
       character.draw(graphics);
     }
+    drawHud(graphics);
+  }
+
+  void drawHud(Graphics graphics) {
+    graphics.setColor(Color.LIGHT_GRAY);
+    graphics.fillRect(MAP_COLUMN * TILE_SIZE, 0, HUD_WIDTH, HUD_HEIGHT);
+    for (int i = 1; i < MAP_ROW; i++) {
+      graphics.setColor(Color.BLACK);
+      graphics.drawLine(MAP_COLUMN * TILE_SIZE,
+              i * TILE_SIZE,
+              MAP_COLUMN * TILE_SIZE + HUD_WIDTH,
+              i * TILE_SIZE);
+    }
   }
 
   public static void main(String[] args) {
 
     JFrame frame = new JFrame("RPG Game");
     MainBoard board = new MainBoard();
-
     frame.add(board);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
