@@ -8,8 +8,8 @@ import java.util.List;
 public class MainBoard extends JComponent implements KeyListener {
   final static int TILE_SIZE = 72;
   final static String FLOOR_REP = "0";
-  final static int MAP_ROW = 3;
-  final static int MAP_COLUMN = 3;
+  final static int MAP_ROW = 10;
+  final static int MAP_COLUMN = 10;
   final static int CANVAS_WIDTH = MAP_COLUMN * TILE_SIZE;
   final static int CANVAS_HEIGHT = MAP_ROW * TILE_SIZE;
 
@@ -93,22 +93,29 @@ public class MainBoard extends JComponent implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
+
   }
 
   @Override
   public void keyReleased(KeyEvent e) {
-    int currentPosX = hero.posX;
-    int currentPosY = hero.posY;
-    int x = currentPosX;
-    int y = currentPosY;
+    int x = hero.posX;
+    int y = hero.posY;
 
-    if (e.getKeyCode() == KeyEvent.VK_UP && currentPosY > 0 && board.isFloorAtPosition(x, y - 1)) {
+    if (e.getKeyCode() == KeyEvent.VK_UP
+            && y > 0
+            && board.isFloorAtPosition(x, y - 1)) {
       hero.moveUp();
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && currentPosY < (MAP_ROW - 1) && board.isFloorAtPosition(x, y + 1)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN
+            && y < (MAP_ROW - 1)
+            && board.isFloorAtPosition(x, y + 1)) {
       hero.moveDown();
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && currentPosX > 0 && board.isFloorAtPosition(x - 1, y)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT
+            && x > 0
+            && board.isFloorAtPosition(x - 1, y)) {
       hero.moveLeft();
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && currentPosX < (MAP_COLUMN - 1) && board.isFloorAtPosition(x + 1, y)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT
+            && x < (MAP_COLUMN - 1)
+            && board.isFloorAtPosition(x + 1, y)) {
       hero.moveRight();
     }
     repaint();
