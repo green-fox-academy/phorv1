@@ -15,6 +15,7 @@ public class MainBoard extends JComponent implements KeyListener {
 
   Area board;
   Hero hero;
+  List<GameCharacter> listCharacter;
   List<Skeleton> listSkeleton;
   Skeleton skeleton;
   Boss boss;
@@ -25,24 +26,30 @@ public class MainBoard extends JComponent implements KeyListener {
 
     board = new Area();
     board.fillFields("assets/wallposition.csv");
+    listCharacter = new ArrayList<>();
     hero = new Hero(0, 0);
-    boss = new Boss(72, 72);
+    listCharacter.add(hero);
+    boss = new Boss(1, 1);
+    listCharacter.add(boss);
     createSkeletons();
   }
 
   public void createSkeletons() {
     int numberOfSkeletons = 2 + (int) (Math.random() * 3);
+    System.out.println(numberOfSkeletons);
     listSkeleton = new ArrayList<>();
     for (int i = 0; i < numberOfSkeletons; i++) {
       int randomX = (int) (Math.random() * MAP_COLUMN);
       int randomY = (int) (Math.random() * MAP_ROW);
       while (!board.isFloorAtPosition(randomX, randomY)
-              || ((hero.getPosX() / TILE_SIZE) == randomX && (hero.getPosY() / TILE_SIZE) == randomY)) {
+              || isThereCharacterOnTile(randomX,randomY)) {
         randomX = (int) (Math.random() * MAP_COLUMN);
         randomY = (int) (Math.random() * MAP_ROW);
       }
-      skeleton = new Skeleton(randomX * TILE_SIZE, randomY * TILE_SIZE);
+      skeleton = new Skeleton(randomX, randomY);
+      System.out.println(skeleton.getPosX() + "   " + skeleton.getPosY());
       listSkeleton.add(skeleton);
+      listCharacter.add(skeleton);
     }
   }
 
@@ -82,19 +89,29 @@ public class MainBoard extends JComponent implements KeyListener {
   public void keyReleased(KeyEvent e) {
     int currentPosX = hero.posX;
     int currentPosY = hero.posY;
-    int x = currentPosX / TILE_SIZE;
-    int y = currentPosY / TILE_SIZE;
+    int x = currentPosX;
+    int y = currentPosY;
 
-    if (e.getKeyCode() == KeyEvent.VK_UP && currentPosY >= TILE_SIZE && board.isFloorAtPosition(x, y - 1)) {
+    if (e.getKeyCode() == KeyEvent.VK_UP && currentPosY > 0 && board.isFloorAtPosition(x, y - 1)) {
       hero.moveUp();
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && currentPosY < TILE_SIZE * (MAP_ROW - 1) && board.isFloorAtPosition(x, y + 1)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && currentPosY < (MAP_ROW - 1) && board.isFloorAtPosition(x, y + 1)) {
       hero.moveDown();
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && currentPosX >= TILE_SIZE && board.isFloorAtPosition(x - 1, y)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && currentPosX > 0 && board.isFloorAtPosition(x - 1, y)) {
       hero.moveLeft();
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && currentPosX < TILE_SIZE * (MAP_COLUMN - 1) && board.isFloorAtPosition(x + 1, y)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && currentPosX < (MAP_COLUMN - 1) && board.isFloorAtPosition(x + 1, y)) {
       hero.moveRight();
     }
     repaint();
   }
+
+  public boolean isThereCharacterOnTile(int inThatX, int inThatY) {
+    for (GameCharacter character : listCharacter) {
+      if ((character.getPosX() == inThatX) && (character.getPosY() == inThatY)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 }
 

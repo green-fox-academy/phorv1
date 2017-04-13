@@ -29,7 +29,7 @@ public class GameObject {
 
   public void draw(Graphics graphics) {
     if (image != null) {
-      graphics.drawImage(image, posX, posY, null);
+      graphics.drawImage(image, posX * MainBoard.TILE_SIZE, posY * MainBoard.TILE_SIZE, null);
     }
   }
 }

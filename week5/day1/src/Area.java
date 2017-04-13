@@ -35,10 +35,10 @@ public class Area extends GameObject {
     for (int i = 0; i < MainBoard.MAP_COLUMN; i++) {
       for (int j = 0; j < MainBoard.MAP_ROW; j++) {
         if (isFloorAtPosition(i, j)) {
-          GameObject image = new GameObject(ImageLoader.getInstance().FLOOR, i * MainBoard.TILE_SIZE, j * MainBoard.TILE_SIZE);
+          GameObject image = new GameObject(ImageLoader.getInstance().FLOOR, i, j);
           image.draw(graphics);
         } else {
-          GameObject image = new GameObject(ImageLoader.getInstance().WALL, i * MainBoard.TILE_SIZE, j * MainBoard.TILE_SIZE);
+          GameObject image = new GameObject(ImageLoader.getInstance().WALL, i, j);
           image.draw(graphics);
         }
       }
