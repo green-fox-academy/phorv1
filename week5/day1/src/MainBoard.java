@@ -93,7 +93,15 @@ public class MainBoard extends JComponent implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
-
+    if (e.getKeyCode() == KeyEvent.VK_UP) {
+      hero.faceUp();
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+      hero.faceDown();
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+      hero.faceLeft();
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      hero.faceRight();
+    }
   }
 
   @Override

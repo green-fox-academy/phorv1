@@ -11,21 +11,33 @@ public class GameCharacter extends GameObject{
 
   void moveUp() {
     this.posY--;
-    setImage(ImageLoader.getInstance().HERO_UP);
   }
 
   void moveDown() {
     this.posY++;
-    setImage(ImageLoader.getInstance().HERO_DOWN);
   }
 
   void moveLeft() {
     this.posX--;
-    setImage(ImageLoader.getInstance().HERO_LEFT);
   }
 
   void moveRight() {
     this.posX++;
+  }
+
+  void faceUp() {
+    setImage(ImageLoader.getInstance().HERO_UP);
+  }
+
+  void faceDown() {
+    setImage(ImageLoader.getInstance().HERO_DOWN);
+  }
+
+  void faceLeft() {
+    setImage(ImageLoader.getInstance().HERO_LEFT);
+  }
+
+  void faceRight() {
     setImage(ImageLoader.getInstance().HERO_RIGHT);
   }
 }
