@@ -1,6 +1,7 @@
 import java.awt.image.BufferedImage;
 
 public class GameCharacter extends GameObject{
+  int level;
   int hp;
   int dp;
   int sp;
