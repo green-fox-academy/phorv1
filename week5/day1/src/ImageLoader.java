@@ -7,14 +7,7 @@ public class ImageLoader {
 
   private static ImageLoader instance;
 
-  public BufferedImage FLOOR;
-  public BufferedImage WALL;
-  public BufferedImage HERO_UP;
-  public BufferedImage HERO_DOWN;
-  public BufferedImage HERO_LEFT;
-  public BufferedImage HERO_RIGHT;
-  public BufferedImage SKELETON;
-  public BufferedImage BOSS;
+  public BufferedImage FLOOR, WALL, HERO_UP, HERO_DOWN, HERO_LEFT, HERO_RIGHT, SKELETON, BOSS;
 
   private ImageLoader() {
     try {

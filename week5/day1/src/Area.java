@@ -4,9 +4,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Area extends BoardMain {
-  int tileSize;
-  String[][] fields = new String[10][10];
+public class Area extends GameObject {
+  String[][] fields = new String[MainBoard.MAP_COLUMN][MainBoard.MAP_ROW];
   Path walls;
 
   public void fillFields(String levelPath) {
@@ -24,8 +23,8 @@ public class Area extends BoardMain {
   public Area() {
   }
 
-  public boolean isFloor(int x, int y) {
-    if ((fields[x][y]).equals("0")) {
+  public boolean isFloorAtPosition(int x, int y) {
+    if ((fields[x][y]).equals(MainBoard.FLOOR_REP)) {
       return true;
     } else {
       return false;
@@ -33,14 +32,13 @@ public class Area extends BoardMain {
   }
 
   public void paintTile(Graphics graphics) {
-    tileSize = 72;
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-        if (isFloor(i, j)) {
-          GameObject image = new GameObject(ImageLoader.getInstance().FLOOR, i * tileSize, j * tileSize);
+    for (int i = 0; i < MainBoard.MAP_COLUMN; i++) {
+      for (int j = 0; j < MainBoard.MAP_ROW; j++) {
+        if (isFloorAtPosition(i, j)) {
+          GameObject image = new GameObject(ImageLoader.getInstance().FLOOR, i * MainBoard.TILE_SIZE, j * MainBoard.TILE_SIZE);
           image.draw(graphics);
         } else {
-          GameObject image = new GameObject(ImageLoader.getInstance().WALL, i * tileSize, j * tileSize);
+          GameObject image = new GameObject(ImageLoader.getInstance().WALL, i * MainBoard.TILE_SIZE, j * MainBoard.TILE_SIZE);
           image.draw(graphics);
         }
       }

@@ -1,17 +1,21 @@
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class GameObject {
 
   BufferedImage image;
   int posX, posY;
 
-  public GameObject() {
+  public int getPosX() {
+    return posX;
   }
 
+  public int getPosY() {
+    return posY;
+  }
+
+  public GameObject() {
+  }
 
   public GameObject(BufferedImage image, int posX, int posY) {
     this.posX = posX;
@@ -28,5 +32,4 @@ public class GameObject {
       graphics.drawImage(image, posX, posY, null);
     }
   }
-
 }
