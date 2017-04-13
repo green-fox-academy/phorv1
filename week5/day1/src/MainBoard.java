@@ -43,7 +43,7 @@ public class MainBoard extends JComponent implements KeyListener {
 
 
   public void createSkeletons() {
-    int numberOfSkeletons = 2 + (int) (Math.random() * 3);
+    int numberOfSkeletons = 2 + (int) (Math.random() * 4);
     System.out.println(numberOfSkeletons);
     for (int i = 0; i < numberOfSkeletons; i++) {
       int[] randomXY = generateValidRandomXY();
@@ -153,5 +153,9 @@ public class MainBoard extends JComponent implements KeyListener {
     return false;
   }
 
+  public int rollDice() {
+    return 1 + (int) (Math.random() * 6);
+  }
 }
+
 
