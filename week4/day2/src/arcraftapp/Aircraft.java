@@ -14,7 +14,21 @@ public class Aircraft {
 
   int fight() {
     int damage = currentAmmo * baseDamage;
+    currentAmmo = 0;
     return damage;
+  }
+
+  int refill(int receivedAmount) {
+    int remainingRefill = receivedAmount;
+    int emptySlots = maxAmmo - currentAmmo;
+    
+    if (receivedAmount >= emptySlots) {
+      receivedAmount -= emptySlots;
+      currentAmmo = maxAmmo;
+    } else {
+      currentAmmo += receivedAmount;
+    }
+    return remainingRefill;
   }
 
 }
