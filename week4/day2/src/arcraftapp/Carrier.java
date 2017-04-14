@@ -32,9 +32,9 @@ public class Carrier {
     for (Aircraft aircraftItem : aircraftStorage) {
       if (aircraftItem instanceof F35) {
         ammoStorage = aircraftItem.refill(ammoStorage);
-        if (ammoStorage == 0) {
-          break;
-        }
+      }
+      if (ammoStorage == 0) {
+        break;
       }
     }
     for (Aircraft aircraftItem : aircraftStorage) {
@@ -42,5 +42,13 @@ public class Carrier {
         ammoStorage = aircraftItem.refill(ammoStorage);
       }
     }
+  }
+
+  void fight(Carrier enemyAircraftCarrier) {
+    int aircraftCarrierDamage = 0;
+    for (Aircraft aircraftItem :aircraftStorage) {
+      aircraftCarrierDamage += aircraftItem.baseDamage * aircraftItem.currentAmmo;
+    }
+    enemyAircraftCarrier.healthPoint -= aircraftCarrierDamage;
   }
 }
