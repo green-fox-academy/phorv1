@@ -3,12 +3,14 @@ package arcraftapp;
 public class Main {
 
   public static void main(String[] args) {
-
-    Aircraft myf16 = new F16();
-    myf16.fight();
-    Aircraft myf35 = new F35();
-    myf35.fight();
-    System.out.println(myf16.getStatus());
+    Carrier motherShip = new Carrier(5000);
+    motherShip.addAircraft("F35");
+    motherShip.addAircraft("F35");
+    motherShip.addAircraft("F16");
+    motherShip.addAircraft("F16");
+    motherShip.addAircraft("F16");
+    motherShip.fill();
+    System.out.println(motherShip.getStatus());
   }
 
 }

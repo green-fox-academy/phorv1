@@ -44,11 +44,25 @@ public class Carrier {
     }
   }
 
-  void fight(Carrier enemyAircraftCarrier) {
-    int aircraftCarrierDamage = 0;
-    for (Aircraft aircraftItem :aircraftStorage) {
-      aircraftCarrierDamage += aircraftItem.baseDamage * aircraftItem.currentAmmo;
+  void fight(Carrier enemyCarrier) {
+    enemyCarrier.healthPoint -= getTotalDamage();
+  }
+
+  int getTotalDamage() {
+    int carrierDamage = 0;
+    for (Aircraft aircraftItem : aircraftStorage) {
+      carrierDamage += aircraftItem.getAllDamage();
     }
-    enemyAircraftCarrier.healthPoint -= aircraftCarrierDamage;
+    return carrierDamage;
+  }
+
+  String getStatus() {
+    String carrierStatus =
+            "Aircraft count: " + aircraftStorage.size() + " | Ammo Storage: " + ammoStorage
+                    + " | Total Damage: " + getTotalDamage() + "\n" + "Aircrafts:";
+    for (Aircraft aircraft : aircraftStorage) {
+      carrierStatus += "\n" + aircraft.getStatus();
+    }
+      return carrierStatus;
   }
 }

@@ -14,7 +14,7 @@ public class Aircraft {
   }
 
   int fight() {
-    int damage = currentAmmo * baseDamage;
+    int damage = getAllDamage();
     currentAmmo = 0;
     return damage;
   }
@@ -39,10 +39,14 @@ public class Aircraft {
   }
 
   String getStatus() {
-    String status = "Type: " + getType()
+    String aircraftStatus = "Type: " + getType()
             + " | Ammo: " + currentAmmo + " | Base damage: "
-            + baseDamage + " | All Damage: " + currentAmmo * baseDamage;
-    return status;
+            + baseDamage + " | All Damage: " + getAllDamage();
+    return aircraftStatus;
+  }
+
+  int getAllDamage() {
+    return currentAmmo * baseDamage;
   }
 
 }
