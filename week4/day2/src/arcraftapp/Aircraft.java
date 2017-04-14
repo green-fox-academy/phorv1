@@ -21,12 +21,13 @@ public class Aircraft {
   int refill(int receivedAmount) {
     int remainingRefill = receivedAmount;
     int emptySlots = maxAmmo - currentAmmo;
-    
+
     if (receivedAmount >= emptySlots) {
-      receivedAmount -= emptySlots;
+      remainingRefill -= emptySlots;
       currentAmmo = maxAmmo;
     } else {
-      currentAmmo += receivedAmount;
+      currentAmmo += remainingRefill;
+      remainingRefill = 0;
     }
     return remainingRefill;
   }
