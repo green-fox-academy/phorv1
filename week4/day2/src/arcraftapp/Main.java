@@ -8,7 +8,7 @@ public class Main {
     myf16.fight();
     Aircraft myf35 = new F35();
     myf35.fight();
-    System.out.println(myf16.get_status());
+    System.out.println(myf16.getStatus());
   }
 
 }

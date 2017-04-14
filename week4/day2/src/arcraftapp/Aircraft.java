@@ -33,13 +33,13 @@ public class Aircraft {
     return remainingRefill;
   }
 
-  String get_type() {
+  String getType() {
     String type = getClass().getSimpleName();
     return type;
   }
 
-  String get_status() {
-    String status = "Type: " + get_type()
+  String getStatus() {
+    String status = "Type: " + getType()
             + " | Ammo: " + currentAmmo + " | Base damage: "
             + baseDamage + " | All Damage: " + currentAmmo * baseDamage;
     return status;

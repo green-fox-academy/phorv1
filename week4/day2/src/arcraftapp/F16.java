@@ -1,6 +1,6 @@
 package arcraftapp;
 
-public class F16 extends Aircraft{
+public class F16 extends Aircraft {
 
   public F16() {
     maxAmmo = 8;
