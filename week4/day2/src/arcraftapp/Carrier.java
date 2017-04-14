@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Carrier {
 
-  int initialAmmo, healthPoint;
+  int ammoStorage, healthPoint;
   List<Aircraft> aircraftStorage;
 
-  public Carrier(int initialAmmo) {
-    this.initialAmmo = initialAmmo;
+  public Carrier(int ammoStorage) {
+    this.ammoStorage = ammoStorage;
     healthPoint = 5000;
     aircraftStorage = new ArrayList<>();
   }
@@ -25,6 +25,22 @@ public class Carrier {
   }
 
   void fill() {
-
+    if (ammoStorage == 0) {
+      System.out.println("Should throw an OutOfAmmo exception!");
+      System.exit(0);
+    }
+    for (Aircraft aircraftItem : aircraftStorage) {
+      if (aircraftItem instanceof F35) {
+        ammoStorage = aircraftItem.refill(ammoStorage);
+        if (ammoStorage == 0) {
+          break;
+        }
+      }
+    }
+    for (Aircraft aircraftItem : aircraftStorage) {
+      if (aircraftItem instanceof F16) {
+        ammoStorage = aircraftItem.refill(ammoStorage);
+      }
+    }
   }
 }
