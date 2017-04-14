@@ -1,6 +1,7 @@
 package arcraftapp;
 
 public class Aircraft {
+
   int currentAmmo, maxAmmo, baseDamage;
 
   public Aircraft() {
@@ -30,6 +31,18 @@ public class Aircraft {
       remainingRefill = 0;
     }
     return remainingRefill;
+  }
+
+  String get_type() {
+    String type = getClass().getSimpleName();
+    return type;
+  }
+
+  String get_status() {
+    String status = "Type: " + get_type()
+            + " | Ammo: " + currentAmmo + " | Base damage: "
+            + baseDamage + " | All Damage: " + currentAmmo * baseDamage;
+    return status;
   }
 
 }

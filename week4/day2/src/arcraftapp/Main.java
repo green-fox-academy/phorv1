@@ -4,10 +4,11 @@ public class Main {
 
   public static void main(String[] args) {
 
-    Aircraft my16 = new F16();
-    my16.fight();
-    Aircraft my35 = new F35();
-    my35.fight();
+    Aircraft myf16 = new F16();
+    myf16.fight();
+    Aircraft myf35 = new F35();
+    myf35.fight();
+    System.out.println(myf16.get_status());
   }
 
 }
