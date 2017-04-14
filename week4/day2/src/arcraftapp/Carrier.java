@@ -34,18 +34,26 @@ public class Carrier {
         ammoStorage = aircraftItem.refill(ammoStorage);
       }
       if (ammoStorage == 0) {
-        break;
+        return;
       }
     }
     for (Aircraft aircraftItem : aircraftStorage) {
       if (aircraftItem instanceof F16) {
         ammoStorage = aircraftItem.refill(ammoStorage);
       }
+      if (ammoStorage == 0) {
+        return;
+      }
     }
   }
 
+
   void fight(Carrier enemyCarrier) {
-    enemyCarrier.healthPoint -= getTotalDamage();
+    int totalDamageDealt = 0;
+    for (Aircraft aircraft : aircraftStorage) {
+      totalDamageDealt += aircraft.fight();
+    }
+    enemyCarrier.healthPoint -= totalDamageDealt;
   }
 
   int getTotalDamage() {
@@ -59,10 +67,11 @@ public class Carrier {
   String getStatus() {
     String carrierStatus =
             "Aircraft count: " + aircraftStorage.size() + " | Ammo Storage: " + ammoStorage
-                    + " | Total Damage: " + getTotalDamage() + "\n" + "Aircrafts:";
+                    + " | Total Damage: " + getTotalDamage() + " | Health Points: " + healthPoint
+                    + "\n" + "Aircrafts:";
     for (Aircraft aircraft : aircraftStorage) {
       carrierStatus += "\n" + aircraft.getStatus();
     }
-      return carrierStatus;
+    return carrierStatus;
   }
 }
