@@ -2,21 +2,17 @@ package pirate;
 
 class Pirate {
 
-  private int rumsDrank;
+  int rumsDrank;
   private int idNumber;
-  private boolean isAlive, isPassOut;
-  private String deadMessage;
-  private String anotherDeadMessage;
+  boolean isAlive, isPassOut;
+  String deadMessage;
+  String anotherDeadMessage;
 
   public int getIdNumber() {
     return idNumber;
   }
 
   public void setIdNumber(int idNumber) {
-    this.idNumber = idNumber;
-  }
-
-  Pirate(int idNumber) {
     this.idNumber = idNumber;
   }
 
