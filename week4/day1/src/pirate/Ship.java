@@ -51,6 +51,20 @@ public class Ship {
             + isAlive + "/" + isPassOut + alivePiratesString + alivePirates();
     System.out.println(shipInfo);
   }
+
+  boolean battle(Ship anotherShip) {
+    int fightPoint = alivePirates() - captain.rumsDrank;
+    int anotherFightPoint = anotherShip.alivePirates() - anotherShip.captain.rumsDrank;
+    for (Pirate pirate : crew) {
+      if (fightPoint > anotherFightPoint) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return battle(anotherShip);
+  }
 }
+
 
 
