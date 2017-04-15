@@ -1,3 +1,4 @@
+package individualWorkshops;
 
 public class Domino {
   private final int[] values;

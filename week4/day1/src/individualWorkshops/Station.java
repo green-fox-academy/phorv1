@@ -1,3 +1,4 @@
+package individualWorkshops;
 
 public class Station {
  static int gasAmount;

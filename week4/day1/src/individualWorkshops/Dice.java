@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package individualWorkshops;
+
 import java.util.Arrays;
 
 public class Dice {

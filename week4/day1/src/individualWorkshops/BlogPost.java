@@ -1,3 +1,4 @@
+package individualWorkshops;
 
 public class BlogPost {
   String authorName;
@@ -7,7 +8,7 @@ public class BlogPost {
 
   @Override
   public String toString() {
-    return "BlogPost{" +
+    return "individualWorkshops.BlogPost{" +
             "authorName='" + authorName + '\'' +
             ", title='" + title + '\'' +
             ", text='" + text + '\'' +

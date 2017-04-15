@@ -1,3 +1,4 @@
+package individualWorkshops;
 
 public class PostIt {
   String backgroundColor;
@@ -6,7 +7,7 @@ public class PostIt {
 
   @Override
   public String toString() {
-    return "PostIt{" +
+    return "individualWorkshops.PostIt{" +
             "backgroundColor='" + backgroundColor + '\'' +
             ", text='" + text + '\'' +
             ", textColor='" + textColor + '\'' +

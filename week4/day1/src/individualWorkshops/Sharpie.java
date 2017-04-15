@@ -1,3 +1,4 @@
+package individualWorkshops;
 
 public class Sharpie {
   String color;
