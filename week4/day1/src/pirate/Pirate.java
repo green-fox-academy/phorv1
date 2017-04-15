@@ -3,9 +3,22 @@ package pirate;
 class Pirate {
 
   private int rumsDrank;
+  private int idNumber;
   private boolean isAlive, isPassOut;
   private String deadMessage;
   private String anotherDeadMessage;
+
+  public int getIdNumber() {
+    return idNumber;
+  }
+
+  public void setIdNumber(int idNumber) {
+    this.idNumber = idNumber;
+  }
+
+  Pirate(int idNumber) {
+    this.idNumber = idNumber;
+  }
 
   Pirate() {
     rumsDrank = 0;
@@ -39,7 +52,7 @@ class Pirate {
     isAlive = false;
   }
 
-  void setPassOut() {
+  void passOut() {
     isPassOut = true;
   }
 
@@ -59,8 +72,8 @@ class Pirate {
       } else if (outcome == 2) {
         anotherPirate.die();
       } else {
-        setPassOut();
-        anotherPirate.setPassOut();
+        passOut();
+        anotherPirate.passOut();
       }
     }
   }
