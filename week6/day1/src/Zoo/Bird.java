@@ -13,6 +13,7 @@ public class Bird extends Animal {
   }
 
   String getName() {
+    String name = "Bird";
     return name;
   }
 
