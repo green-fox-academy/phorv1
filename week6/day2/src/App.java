@@ -12,7 +12,6 @@ public class App {
     }
     sameType(parkingLot);
     sameColor(parkingLot);
-
   }
 
   public static carType randomType() {
@@ -89,6 +88,7 @@ public class App {
             "Red: " + countRed + " Black: " + countBlack + " Silver: " + countSilver + " White: "
                     + countWhite);
   }
+
 }
 
 
