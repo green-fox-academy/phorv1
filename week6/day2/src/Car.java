@@ -1,14 +1,20 @@
-import java.util.ArrayList;
-import java.util.List;
 
 public class Car {
 
-  public enum carType{ BMW, AUDI, MERCEDES, VOLKSWAGEN}
-  public enum carColor{RED, BLACK, SILVER, WHITE}
+  carType type;
+  carColor color;
 
-  List<carType> listOFCars = new ArrayList<>();
-  
+  public Car(carType type, carColor color) {
+    this.type = type;
+    this.color = color;
+  }
+
+  @Override
+  public String toString() {
+    return "{" + type + " " + color + "}";
+  }
 }
+
 
 
   /*Create a Car class with 2 enum properties
