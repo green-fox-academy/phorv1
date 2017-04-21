@@ -8,7 +8,7 @@ public class App {
 
     ToDoList toDoList;
     toDoList = new ToDoList();
-
+    toDoList.noArgument(args);
     OptionParser parser = new OptionParser();
     parser.accepts("l");
     parser.accepts("a").withOptionalArg();
@@ -17,20 +17,16 @@ public class App {
 
     OptionSet options = parser.parse(args);
 
-    if (options.nonOptionArguments().equals("")) {
-      toDoList.NoArgument();
-    }
-
     if (options.has("l")) {
-      toDoList.ListTask();
+      toDoList.listTasks();
     }
 
     if (options.hasArgument("a")) {
-      toDoList.AddTask(options.valueOf("a").toString());
+      toDoList.addTask(options.valueOf("a").toString());
     }
 
     if (options.hasArgument("r")) {
-      toDoList.RemoveTask(options.valueOf("r").toString());
+      toDoList.removeTask(options.valueOf("r").toString());
     }
 
   }

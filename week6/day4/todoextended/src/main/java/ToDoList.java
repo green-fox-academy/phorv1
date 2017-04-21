@@ -17,19 +17,21 @@ public class ToDoList {
   String usage = "src/main/java/usage.txt";
   String taskFile = "src/main/java/tasks.txt";
 
-  public void NoArgument() {
+  public void noArgument(String[] args) {
     try {
       usageFile = Paths.get(usage);
       List<String> noArgument = Files.readAllLines(usageFile);
-      for (int i = 0; i < noArgument.size(); i++) {
-        System.out.println(noArgument.get(i));
+      if (args.length == 0) {
+        for (int i = 0; i < noArgument.size(); i++) {
+          System.out.println(noArgument.get(i));
+        }
       }
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  public void ListTask() {
+  public void listTasks() {
     try {
       tasksFilePath = Paths.get(taskFile);
       List<String> orderedList = Files.readAllLines(tasksFilePath);
@@ -49,20 +51,20 @@ public class ToDoList {
     }
   }
 
-  public void AddTask(String taskToAdd) {
+  public void addTask(String taskToAdd) {
     tasksFilePath = Paths.get(taskFile);
     try {
       list = Files.readAllLines(tasksFilePath);
       list.add(list.size(), "[ ]" + taskToAdd);
       Files.write(tasksFilePath, list);
       System.out.println("Here is your new list:");
-      ListTask();
+      listTasks();
       System.out.println();
     } catch (Exception e) {
     }
   }
 
-  public void RemoveTask(String taskToRemove) {
+  public void removeTask(String taskToRemove) {
     tasksFilePath = Paths.get(taskFile);
     try {
       list = Files.readAllLines(tasksFilePath);
@@ -70,14 +72,14 @@ public class ToDoList {
       Files.write(tasksFilePath, list);
 
       System.out.println(updatedList);
-      ListTask();
+      listTasks();
       System.out.println();
     } catch (Exception e) {
       System.out.println(errorNotNumber);
     }
   }
 
-  public void CheckTask(String[] args) {
+  public void checkTask(String[] args) {
     tasksFilePath = Paths.get(taskFile);
     String chosenTask;
     try {
@@ -93,7 +95,7 @@ public class ToDoList {
         Files.write(tasksFilePath, list);
       }
       System.out.println(updatedList);
-      ListTask();
+      listTasks();
       System.out.println();
     } catch (Exception e) {
       System.out.println(errorNotNumber);
