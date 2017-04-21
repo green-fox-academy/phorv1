@@ -1,0 +1,9 @@
+.idea
+out
+*.iml
+*.xml
+.gradle
+/build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
