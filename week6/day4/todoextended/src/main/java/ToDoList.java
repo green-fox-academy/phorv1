@@ -10,10 +10,7 @@ public class ToDoList {
   Path tasksFilePath;
   Path usageFile;
   List<String> list;
-  String errorNoIndex = "System error: No index is provided!";
   String error = "System error: Something went wrong!";
-  String errorOutIndex = "System error: Index is out of list size!";
-  String errorNotNumber = "System error: Index is not a number!";
   String updatedList = "Here is your new list:";
   String usage = "src/main/java/usage.txt";
   String taskFile = "src/main/java/tasks.txt";
@@ -37,7 +34,7 @@ public class ToDoList {
       tasksFilePath = Paths.get(taskFile);
       List<String> orderedList = Files.readAllLines(tasksFilePath);
       if (orderedList.size() == 0) {
-          System.out.println("Nothing to do today! :)");
+        System.out.println("Nothing to do today! :)");
       } else {
         for (int i = 0; i < orderedList.size(); i++) {
           if (i < 9) {
@@ -79,26 +76,21 @@ public class ToDoList {
     }
   }
 
-  public void checkTask(String[] args) {
+  public void checkTask(String taskToCheck) {
     tasksFilePath = Paths.get(taskFile);
     String chosenTask;
     try {
       list = Files.readAllLines(tasksFilePath);
-      if (args.length == 1) {
-        System.out.println(errorNoIndex);
-      } else if (Integer.parseInt(args[1]) > list.size()) {
-        System.out.println(errorOutIndex);
-      } else {
-        chosenTask = list.get(Integer.parseInt(args[1]) - 1);
-        String newString = chosenTask.replaceFirst(" ", "x");
-        list.set((Integer.parseInt(args[1]) - 1), newString);
-        Files.write(tasksFilePath, list);
-      }
+      chosenTask = list.get(Integer.parseInt(taskToCheck) - 1);
+      String newString = chosenTask.replaceFirst(" ", "x");
+      list.set((Integer.parseInt(taskToCheck) -1 ), newString);
+      Files.write(tasksFilePath, list);
+
       System.out.println(updatedList);
       listTasks();
       System.out.println();
     } catch (Exception e) {
-      System.out.println(errorNotNumber);
+      System.out.println(error);
     }
   }
 }

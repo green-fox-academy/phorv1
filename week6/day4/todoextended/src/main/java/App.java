@@ -28,5 +28,10 @@ public class App {
     if (options.hasArgument("r")) {
       toDoList.removeTask(options.valueOf("r").toString());
     }
+
+    if (options.hasArgument("c")) {
+      toDoList.checkTask(options.valueOf("c").toString());
+    }
+
   }
 }
