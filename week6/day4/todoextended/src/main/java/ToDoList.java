@@ -10,7 +10,6 @@ public class ToDoList {
   Path tasksFilePath;
   Path usageFile;
   List<String> list;
-  String errorNoTask = "System error: No task is provided!";
   String errorNoIndex = "System error: No index is provided!";
   String errorOutIndex = "System error: Index is out of list size!";
   String errorNotNumber = "System error: Index is not a number!";
@@ -35,7 +34,7 @@ public class ToDoList {
       tasksFilePath = Paths.get(taskFile);
       List<String> orderedList = Files.readAllLines(tasksFilePath);
       if (orderedList.size() == 0) {
-        System.out.println("nothing to do today! :)");
+          System.out.println("Nothing to do today! :)");
       } else {
         for (int i = 0; i < orderedList.size(); i++) {
           if (i < 9) {
@@ -62,24 +61,6 @@ public class ToDoList {
     } catch (Exception e) {
     }
   }
-
-/*  public void AddTask(String[] args) {
-    tasksFilePath = Paths.get(taskFile);
-    try {
-      list = Files.readAllLines(tasksFilePath);
-      if (args.length == 1) {
-        System.out.println(errorNoTask);
-      } else {
-        list.add(list.size(), "[ ]" + args[1]);
-        Files.write(tasksFilePath, list);
-      }
-      System.out.println("Here is your new list:");
-      ListTask();
-      System.out.println();
-    } catch (Exception e) {
-    }
-  }
-*/
 
   public void RemoveTask(String taskToRemove) {
     tasksFilePath = Paths.get(taskFile);

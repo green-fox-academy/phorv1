@@ -17,8 +17,12 @@ public class App {
 
     OptionSet options = parser.parse(args);
 
-    if (options.nonOptionArguments().isEmpty()) {
+    if (options.nonOptionArguments().equals("")) {
       toDoList.NoArgument();
+    }
+
+    if (options.has("l")) {
+      toDoList.ListTask();
     }
 
     if (options.hasArgument("a")) {
@@ -28,11 +32,6 @@ public class App {
     if (options.hasArgument("r")) {
       toDoList.RemoveTask(options.valueOf("r").toString());
     }
-
-    if (options.has("l")) {
-      System.out.println("`-l` was given with the no additional information.");
-    }
-
 
   }
 }
