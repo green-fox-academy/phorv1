@@ -10,25 +10,23 @@ public class App {
     toDoList = new ToDoList();
 
     OptionParser parser = new OptionParser();
-    parser.accepts("l"); //you don't need "-" is not a legal option character
+    parser.accepts("l");
     parser.accepts("a").withOptionalArg();
     parser.accepts("r").withOptionalArg();
     parser.accepts("c").withOptionalArg();
 
     OptionSet options = parser.parse(args);
 
+    if (options.nonOptionArguments().isEmpty()) {
+      toDoList.NoArgument();
+    }
+
     if (options.hasArgument("a")) {
       toDoList.AddTask(options.valueOf("a").toString());
-    } else {
-      System.out.println("System error: Argument is required after '-a'");
     }
 
-    if (options.has("l")) {
-      System.out.println("`-l` was given with the no additional information.");
-    }
-
-    if (options.has("l")) {
-      System.out.println("`-l` was given with the no additional information.");
+    if (options.hasArgument("r")) {
+      toDoList.RemoveTask(options.valueOf("r").toString());
     }
 
     if (options.has("l")) {

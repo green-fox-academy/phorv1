@@ -7,8 +7,8 @@ import joptsimple.OptionSpec;
 
 public class ToDoList {
 
-  Path listtasksText;
-  Path printusageText;
+  Path tasksFilePath;
+  Path usageFile;
   List<String> list;
   String errorNoTask = "System error: No task is provided!";
   String errorNoIndex = "System error: No index is provided!";
@@ -20,8 +20,8 @@ public class ToDoList {
 
   public void NoArgument() {
     try {
-      printusageText = Paths.get(usage);
-      List<String> noArgument = Files.readAllLines(printusageText);
+      usageFile = Paths.get(usage);
+      List<String> noArgument = Files.readAllLines(usageFile);
       for (int i = 0; i < noArgument.size(); i++) {
         System.out.println(noArgument.get(i));
       }
@@ -32,8 +32,8 @@ public class ToDoList {
 
   public void ListTask() {
     try {
-      listtasksText = Paths.get(taskFile);
-      List<String> orderedList = Files.readAllLines(listtasksText);
+      tasksFilePath = Paths.get(taskFile);
+      List<String> orderedList = Files.readAllLines(tasksFilePath);
       if (orderedList.size() == 0) {
         System.out.println("nothing to do today! :)");
       } else {
@@ -51,11 +51,11 @@ public class ToDoList {
   }
 
   public void AddTask(String taskToAdd) {
-    listtasksText = Paths.get(taskFile);
+    tasksFilePath = Paths.get(taskFile);
     try {
-      list = Files.readAllLines(listtasksText);
-      list.add(list.size(), "[ ] " + taskToAdd);
-      Files.write(listtasksText, list);
+      list = Files.readAllLines(tasksFilePath);
+      list.add(list.size(), "[ ]" + taskToAdd);
+      Files.write(tasksFilePath, list);
       System.out.println("Here is your new list:");
       ListTask();
       System.out.println();
@@ -64,14 +64,14 @@ public class ToDoList {
   }
 
 /*  public void AddTask(String[] args) {
-    listtasksText = Paths.get(taskFile);
+    tasksFilePath = Paths.get(taskFile);
     try {
-      list = Files.readAllLines(listtasksText);
+      list = Files.readAllLines(tasksFilePath);
       if (args.length == 1) {
         System.out.println(errorNoTask);
       } else {
         list.add(list.size(), "[ ]" + args[1]);
-        Files.write(listtasksText, list);
+        Files.write(tasksFilePath, list);
       }
       System.out.println("Here is your new list:");
       ListTask();
@@ -81,18 +81,13 @@ public class ToDoList {
   }
 */
 
-  public void RemoveTask(String[] args) {
-    listtasksText = Paths.get(taskFile);
+  public void RemoveTask(String taskToRemove) {
+    tasksFilePath = Paths.get(taskFile);
     try {
-      list = Files.readAllLines(listtasksText);
-      if (args.length == 1) {
-        System.out.println(errorNoIndex);
-      } else if (Integer.parseInt(args[1]) > list.size()) {
-        System.out.println(errorOutIndex);
-      } else {
-        list.remove(Integer.parseInt(args[1]) - 1);
-        Files.write(listtasksText, list);
-      }
+      list = Files.readAllLines(tasksFilePath);
+      list.remove(Integer.parseInt(taskToRemove));
+      Files.write(tasksFilePath, list);
+
       System.out.println(updatedList);
       ListTask();
       System.out.println();
@@ -102,10 +97,10 @@ public class ToDoList {
   }
 
   public void CheckTask(String[] args) {
-    listtasksText = Paths.get(taskFile);
+    tasksFilePath = Paths.get(taskFile);
     String chosenTask;
     try {
-      list = Files.readAllLines(listtasksText);
+      list = Files.readAllLines(tasksFilePath);
       if (args.length == 1) {
         System.out.println(errorNoIndex);
       } else if (Integer.parseInt(args[1]) > list.size()) {
@@ -114,7 +109,7 @@ public class ToDoList {
         chosenTask = list.get(Integer.parseInt(args[1]) - 1);
         String newString = chosenTask.replaceFirst(" ", "x");
         list.set((Integer.parseInt(args[1]) - 1), newString);
-        Files.write(listtasksText, list);
+        Files.write(tasksFilePath, list);
       }
       System.out.println(updatedList);
       ListTask();

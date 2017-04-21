@@ -2,6 +2,8 @@
 out
 *.iml
 *.xml
+*.class
+*.txt
 .gradle
 /build/
 gradle-app.setting
