@@ -11,6 +11,7 @@ public class ToDoList {
   Path usageFile;
   List<String> list;
   String errorNoIndex = "System error: No index is provided!";
+  String error = "System error: Something went wrong!";
   String errorOutIndex = "System error: Index is out of list size!";
   String errorNotNumber = "System error: Index is not a number!";
   String updatedList = "Here is your new list:";
@@ -68,14 +69,13 @@ public class ToDoList {
     tasksFilePath = Paths.get(taskFile);
     try {
       list = Files.readAllLines(tasksFilePath);
-      list.remove(Integer.parseInt(taskToRemove));
+      list.remove(Integer.parseInt(taskToRemove) - 1);
       Files.write(tasksFilePath, list);
-
       System.out.println(updatedList);
       listTasks();
       System.out.println();
     } catch (Exception e) {
-      System.out.println(errorNotNumber);
+      System.out.println(error);
     }
   }
 
