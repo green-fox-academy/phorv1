@@ -1,3 +1,6 @@
+import java.io.IOException;
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
 
 public class App {
 
@@ -6,18 +9,32 @@ public class App {
     ToDoList toDoList;
     toDoList = new ToDoList();
 
-    if (args.length == 0) {
-      toDoList.NoArgument();
-    } else if (args[0].charAt(0) != '-') {
-      System.out.println("System error: Unsupported argument!");
-    } else if (args[0].contains("-l")) {
-      toDoList.ListTask();
-    } else if (args[0].contains("-a")) {
-      toDoList.AddTask(args);
-    } else if (args[0].contains("-r")) {
-      toDoList.RemoveTask(args);
-    } else if (args[0].contains("-c")) {
-      toDoList.CheckTask(args);
+    OptionParser parser = new OptionParser();
+    parser.accepts("l"); //you don't need "-" is not a legal option character
+    parser.accepts("a").withOptionalArg();
+    parser.accepts("r").withOptionalArg();
+    parser.accepts("c").withOptionalArg();
+
+    OptionSet options = parser.parse(args);
+
+    if (options.hasArgument("a")) {
+      toDoList.AddTask(options.valueOf("a").toString());
+    } else {
+      System.out.println("System error: Argument is required after '-a'");
     }
+
+    if (options.has("l")) {
+      System.out.println("`-l` was given with the no additional information.");
+    }
+
+    if (options.has("l")) {
+      System.out.println("`-l` was given with the no additional information.");
+    }
+
+    if (options.has("l")) {
+      System.out.println("`-l` was given with the no additional information.");
+    }
+
+
   }
 }

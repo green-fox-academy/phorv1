@@ -3,8 +3,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import joptsimple.OptionSpec;
 
 public class ToDoList {
+
   Path listtasksText;
   Path printusageText;
   List<String> list;
@@ -48,7 +50,20 @@ public class ToDoList {
     }
   }
 
-  public void AddTask(String[] args) {
+  public void AddTask(String taskToAdd) {
+    listtasksText = Paths.get(taskFile);
+    try {
+      list = Files.readAllLines(listtasksText);
+      list.add(list.size(), "[ ] " + taskToAdd);
+      Files.write(listtasksText, list);
+      System.out.println("Here is your new list:");
+      ListTask();
+      System.out.println();
+    } catch (Exception e) {
+    }
+  }
+
+/*  public void AddTask(String[] args) {
     listtasksText = Paths.get(taskFile);
     try {
       list = Files.readAllLines(listtasksText);
@@ -64,6 +79,7 @@ public class ToDoList {
     } catch (Exception e) {
     }
   }
+*/
 
   public void RemoveTask(String[] args) {
     listtasksText = Paths.get(taskFile);
