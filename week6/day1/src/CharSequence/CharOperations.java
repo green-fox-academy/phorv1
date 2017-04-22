@@ -2,12 +2,11 @@ package CharSequence;
 
 public class CharOperations implements CharSequence {
 
-  String input;
+  private String input;
 
   public CharOperations(String input) {
     this.input = input;
   }
-
 
   @Override
   public int length() {
