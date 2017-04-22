@@ -1,6 +1,6 @@
 package CharSequence;
 
-public class CharOperations implements CharSequence{
+public class CharOperations implements CharSequence {
 
   String input;
 
@@ -20,13 +20,19 @@ public class CharOperations implements CharSequence{
   }
 
   @Override
-  public CharSequence subSequence(int start, int end) {
-    return input.subSequence(start, end);
+  public String subSequence(int start, int end) {
+    String reversed = reverse(input);
+    return reversed.substring(start, end);
   }
 
   @Override
   public String toString() {
-    return input.toString();
+    return reverse(input);
+  }
+
+  private String reverse(String inputString) {
+    StringBuilder original = new StringBuilder(inputString);
+    return original.reverse().toString();
   }
 
 }
