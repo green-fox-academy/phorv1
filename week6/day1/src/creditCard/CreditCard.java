@@ -1,39 +1,64 @@
 package creditCard;
 
+import java.util.List;
+
 public class CreditCard implements CreditCardy {
+
+  public static final String FORMAT = "Name=%s CC#=%s CVV=%d (validated)";
+  private int sum, ordinalNumber;
+  long codeAccount;
+  private String name;
+  private static int counter = 0;
+
+  public CreditCard() {
+    this.ordinalNumber = counter++;
+    codeAccount = randomGenerator(16);
+    this.name = "ABC" + ordinalNumber ;
+    this.sum = cumeSumCVV(codeAccount);
+  }
 
   @Override
   public int getSumCVV() {
-    return 0;
+    return sum;
   }
 
   @Override
   public String getNameCardholder() {
-    return null;
+    return name;
   }
 
   @Override
   public String getCodeAccount() {
-    return randomGenerator(16);
+    return String.valueOf(codeAccount);
   }
 
   @Override
-  public int cumeSumCVV(String codeAccount) {
-    return 0;
+  public int cumeSumCVV(long codeAccount) {
+    String[] codeAccountElements = String.valueOf(codeAccount).split("");
+    int sum = 0;
+    for (int i = 0; i < codeAccountElements.length; i++) {
+      sum += Integer.parseInt(codeAccountElements[i]);
+    }
+    return sum;
   }
 
   @Override
   public String toString() {
-    return super.toString();
+    return String.format(FORMAT, getNameCardholder(), getCodeAccount(), getSumCVV());
   }
 
-  String randomGenerator(int amountToRandomise) {
+  long randomGenerator(int amountToRandomise) {
     String randomCode = "";
     for (int i = 0; i < amountToRandomise; i++) {
-      int randomIndex = (int) (Math.random() * 10);
-      randomCode += randomIndex;
+      if (i == 0) {
+        int randomNumber = 1 + (int) (Math.random() * 9);
+        randomCode += String.valueOf(randomNumber);
+      } else {
+        int randomNumber = (int) (Math.random() * 10);
+        randomCode += String.valueOf(randomNumber);
+      }
     }
-    return randomCode;
+    return Long.parseLong(randomCode);
   }
 
 }

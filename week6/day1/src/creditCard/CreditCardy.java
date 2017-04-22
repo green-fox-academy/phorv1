@@ -8,7 +8,7 @@ interface CreditCardy {
 
   String getCodeAccount();
 
-  int cumeSumCVV(String codeAccount); // computes codeAccount checksum
+  int cumeSumCVV(long codeAccount); // computes codeAccount checksum
 
   String toString (); //String.format("Name=%s CC#=%s CVV=%d");
 }
