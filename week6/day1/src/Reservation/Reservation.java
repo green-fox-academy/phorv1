@@ -11,22 +11,22 @@ public class Reservation implements Reservationy{
 
     @Override
   public String getDowBooking() {
-    return null;
+    return randomGenerator(1, DOW);
   }
 
   @Override
   public String getCodeBooking() {
-
-    return null;
+    return randomGenerator(8, NULL_TO_Z);
   }
 
   @Override
   public String toString() {
-    return super.toString();
+    String text = "Booking# %s for %s";
+    return String.format(text, getCodeBooking(), getDowBooking());
   }
 
   String randomGenerator(int amountToRandomise, List<String> getRandomFrom) {
-    String randomCode = null;
+    String randomCode = "";
     for (int i = 0; i < amountToRandomise; i++) {
       int randomIndex = (int) (Math.random() * getRandomFrom.size());
       randomCode += getRandomFrom.get(randomIndex);
@@ -34,4 +34,10 @@ public class Reservation implements Reservationy{
     return randomCode;
   }
 
+  static void createReservation(int amountOfRes) {
+    for (int i = 0; i < amountOfRes; i++) {
+      Reservation reservation = new Reservation();
+      System.out.println(reservation);
+    }
+  }
 }
