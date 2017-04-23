@@ -2,8 +2,8 @@ package CreditCardReservation;
 
 import Reservation.Reservation;
 import Reservation.Reservationy;
-import creditCard.CreditCard;
-import creditCard.CreditCardy;
+import CreditCard.CreditCard;
+import CreditCard.CreditCardy;
 
 public class CreditCardReservation implements Reservationy, CreditCardy {
 

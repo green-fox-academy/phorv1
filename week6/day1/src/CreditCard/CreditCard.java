@@ -1,6 +1,4 @@
-package creditCard;
-
-import java.util.List;
+package CreditCard;
 
 public class CreditCard implements CreditCardy {
 

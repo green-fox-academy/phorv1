@@ -1,4 +1,4 @@
-package creditCard;
+package CreditCard;
 
 public interface CreditCardy {
 
