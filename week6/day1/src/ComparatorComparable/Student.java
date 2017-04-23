@@ -29,7 +29,13 @@ public class Student extends Person implements Comparable{
   }
 
   @Override
-  public int compareTo(Object o) {
-    return 0;
+  public int compareTo(Object student){
+    if (student instanceof Student){
+      int x = skippedDays;
+      int y = ((Student) student).skippedDays;
+      return (x < y) ? -1 : ((x == y) ? 0 : 1);
+    } else {
+      return -999;
+    }
   }
 }
