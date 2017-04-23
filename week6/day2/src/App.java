@@ -12,7 +12,7 @@ public class App {
       Car car = new Car(randomType(), randomColor());
       parkingLot.add(car);
     }
-    sameType(parkingLot);
+    sameType(parkingLot, CarType.values());
     sameColor(parkingLot);
 
   }
@@ -31,8 +31,8 @@ public class App {
     return CarColor.values()[randomColor];
   }
 
-  public static <T extends Enum<T>> void sameType(List<Car> list) {
-    Map<Enum<T>, Integer> stats = new HashMap();
+  public static <T extends Enum<T>> void sameType(List<Car> list, Enum<T>[] values) {
+    Map<Enum<T>, Integer> stats = new HashMap<>();
 
     for (Car car : list) {
       if (stats.containsKey(car.type)) {
@@ -53,7 +53,7 @@ public class App {
   }
 
   public static <T extends Enum<T>> void sameColor(List<Car> list) {
-    Map<Enum<T>, Integer> stats = new HashMap();
+    Map<Enum<T>, Integer> stats = new HashMap<>();
 
     for (Car car : list) {
       if (stats.containsKey(car.color)) {
