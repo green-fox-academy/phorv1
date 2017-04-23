@@ -1,6 +1,6 @@
 package ComparatorComparable;
 
-public class Mentor extends Person {
+public class Mentor extends Person implements Comparable {
   String level;
 
   public void introduce(){
@@ -18,5 +18,10 @@ public class Mentor extends Person {
   public Mentor(String name, int age, String gender, String level) {
     super(name, age, gender);
     this.level = level;
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    return 0;
   }
 }

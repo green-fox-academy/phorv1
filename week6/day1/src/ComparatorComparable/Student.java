@@ -1,6 +1,6 @@
 package ComparatorComparable;
 
-public class Student extends Person {
+public class Student extends Person implements Comparable{
   String previousOrganisation;
   int skippedDays;
 
@@ -28,4 +28,8 @@ public class Student extends Person {
     this.skippedDays = 0;
   }
 
+  @Override
+  public int compareTo(Object o) {
+    return 0;
+  }
 }
