@@ -1,10 +1,10 @@
 
 public class Car {
 
-  carType type;
-  carColor color;
+  CarType type;
+  CarColor color;
 
-  public Car(carType type, carColor color) {
+  public Car(CarType type, CarColor color) {
     this.type = type;
     this.color = color;
   }

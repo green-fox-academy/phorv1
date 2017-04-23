@@ -1,4 +1,4 @@
 
-public enum carType {
+public enum CarType {
   BMW, AUDI, MERCEDES, VOLKSWAGEN;
 }

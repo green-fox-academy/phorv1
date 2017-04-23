@@ -1,5 +1,9 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class App {
 
@@ -12,81 +16,56 @@ public class App {
     }
     sameType(parkingLot);
     sameColor(parkingLot);
+
   }
 
-  public static carType randomType() {
-    int randomType = (int) (Math.random() * 4);
-    carType type;
+  public static CarType randomType() {
+    int enumTypeLength = CarType.values().length;
+    int randomType = (int) (Math.random() * enumTypeLength);
 
-    if (randomType == 0) {
-      type = carType.BMW;
-    } else if (randomType == 1) {
-      type = carType.AUDI;
-    } else if (randomType == 2) {
-      type = carType.MERCEDES;
-    } else {
-      type = carType.VOLKSWAGEN;
-    }
-    return type;
+    return CarType.values()[randomType];
   }
 
-  public static carColor randomColor() {
-    int randomColor = (int) (Math.random() * 4);
-    carColor color;
+  public static CarColor randomColor() {
+    int enumColorLength = CarColor.values().length;
+    int randomColor = (int) (Math.random() * enumColorLength);
 
-    if (randomColor == 0) {
-      color = carColor.RED;
-    } else if (randomColor == 1) {
-      color = carColor.BLACK;
-    } else if (randomColor == 2) {
-      color = carColor.SILVER;
-    } else {
-      color = carColor.WHITE;
-    }
-    return color;
+    return CarColor.values()[randomColor];
   }
 
-  public static void sameType(List<Car> list) {
-    int countBMW = 0;
-    int countAudi = 0;
-    int countMercedes = 0;
-    int countVolkswagen = 0;
+  public static <T extends Enum <T>> void sameType(List<Car> list) {
+    Map<Enum<T>, Integer> typeStats = new HashMap();
 
     for (Car car : list) {
-      if (car.type == carType.BMW) {
-        countBMW++;
-      } else if (car.type == carType.AUDI) {
-        countAudi++;
-      } else if (car.type == carType.MERCEDES) {
-        countMercedes++;
+      if (typeStats.containsKey(car.type)) {
+        int previousAmount = typeStats.get(car.type);
+        typeStats.put((Enum<T>) car.type, ++previousAmount);
       } else {
-        countVolkswagen++;
+        typeStats.put((Enum<T>) car.type, 1);
       }
     }
-    System.out.println("BMW: " + countBMW + " Audi: " + countAudi + " Mercedes: " + countMercedes
-            + " Volkswagen: " + countVolkswagen);
+    printTypeStats(typeStats);
+  }
+
+  private static <T extends Enum <T>> void printTypeStats (Map<Enum<T>, Integer> stats) {
+    for (Iterator<Enum<T>> iterator = stats.keySet().iterator(); iterator.hasNext(); ) {
+      Enum<T> genericEnumValue = iterator.next();
+      System.out.printf("%s: %d ", genericEnumValue, stats.get(genericEnumValue));
+    }
+    System.out.println();
   }
 
   public static void sameColor(List<Car> list) {
-    int countRed = 0;
-    int countBlack = 0;
-    int countSilver = 0;
-    int countWhite = 0;
+  Map<CarColor, Integer> colorStats = new HashMap<>();
 
     for (Car car : list) {
-      if (car.color == carColor.RED) {
-        countRed++;
-      } else if (car.color == carColor.BLACK) {
-        countBlack++;
-      } else if (car.color == carColor.SILVER) {
-        countSilver++;
-      } else {
-        countWhite++;
+      if (colorStats.containsKey(car.color)) {
+        int previousAmount = colorStats.get(car.color);
+
       }
     }
-    System.out.println(
-            "Red: " + countRed + " Black: " + countBlack + " Silver: " + countSilver + " White: "
-                    + countWhite);
+
+
   }
 
 }
