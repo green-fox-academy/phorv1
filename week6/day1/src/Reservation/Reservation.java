@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Reservation implements Reservationy{
-  
+
     @Override
   public String getDowBooking() {
     return randomGenerator(1, DOW);

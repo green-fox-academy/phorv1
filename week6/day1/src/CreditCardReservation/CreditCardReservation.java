@@ -3,6 +3,7 @@ package CreditCardReservation;
 import Reservation.Reservation;
 import Reservation.Reservationy;
 import creditCard.CreditCardy;
+import java.util.List;
 
 public class CreditCardReservation implements Reservationy, CreditCardy {
 
@@ -43,4 +44,21 @@ public class CreditCardReservation implements Reservationy, CreditCardy {
   public String toString() {
     return super.toString();
   }
+
+  String randomGenerator(int amountToRandomise, List<String> getRandomFrom) {
+    String randomCode = "";
+    for (int i = 0; i < amountToRandomise; i++) {
+      int randomIndex = (int) (Math.random() * getRandomFrom.size());
+      randomCode += getRandomFrom.get(randomIndex);
+    }
+    return randomCode;
+  }
+
+  static void createReservation(int amountOfRes) {
+    for (int i = 0; i < amountOfRes; i++) {
+      Reservation reservation = new Reservation();
+      System.out.println(reservation);
+    }
+  }
+
 }
