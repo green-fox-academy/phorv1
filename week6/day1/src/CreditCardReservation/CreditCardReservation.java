@@ -49,12 +49,7 @@ public class CreditCardReservation implements Reservationy, CreditCardy {
 
   @Override
   public int cumeSumCVV(long codeAccount) {
-    String[] codeAccountElements = String.valueOf(codeAccount).split("");
-    int sum = 0;
-    for (int i = 0; i < codeAccountElements.length; i++) {
-      sum += Integer.parseInt(codeAccountElements[i]);
-    }
-    return sum;
+  return card.cumeSumCVV(codeAccount);
   }
 
   @Override
