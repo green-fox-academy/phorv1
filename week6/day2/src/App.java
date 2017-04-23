@@ -48,8 +48,7 @@ public class App {
   }
 
   private static <T extends Enum <T>> void printTypeStats (Map<Enum<T>, Integer> stats) {
-    for (Iterator<Enum<T>> iterator = stats.keySet().iterator(); iterator.hasNext(); ) {
-      Enum<T> genericEnumValue = iterator.next();
+    for (Enum<T> genericEnumValue : stats.keySet()) {
       System.out.printf("%s: %d ", genericEnumValue, stats.get(genericEnumValue));
     }
     System.out.println();
