@@ -4,7 +4,6 @@ import java.util.List;
 
 public class CreditCard implements CreditCardy {
 
-  public static final String FORMAT = "Name=%s CC#=%s CVV=%d (validated)";
   private int sum, ordinalNumber;
   long codeAccount;
   private String name;

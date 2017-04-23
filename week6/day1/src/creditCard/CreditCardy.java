@@ -2,6 +2,8 @@ package creditCard;
 
 public interface CreditCardy {
 
+  public static final String FORMAT = "Name=%s CC#=%s CVV=%d (validated)";
+
   int getSumCVV();
 
   String getNameCardholder();
