@@ -4,7 +4,8 @@ public class Mentor extends Person implements Comparable {
 
   Level level;
 
-  enum Level {BEGINNER(1), INTERMEDIATE(2), SENIOR(3);
+  enum Level {
+    BEGINNER(1), INTERMEDIATE(2), SENIOR(3);
 
     int value;
 
