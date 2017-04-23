@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class App {
 
@@ -33,40 +31,43 @@ public class App {
     return CarColor.values()[randomColor];
   }
 
-  public static <T extends Enum <T>> void sameType(List<Car> list) {
-    Map<Enum<T>, Integer> typeStats = new HashMap();
+  public static <T extends Enum<T>> void sameType(List<Car> list) {
+    Map<Enum<T>, Integer> stats = new HashMap();
 
     for (Car car : list) {
-      if (typeStats.containsKey(car.type)) {
-        int previousAmount = typeStats.get(car.type);
-        typeStats.put((Enum<T>) car.type, ++previousAmount);
+      if (stats.containsKey(car.type)) {
+        int previousAmount = stats.get(car.type);
+        stats.put((Enum<T>) car.type, ++previousAmount);
       } else {
-        typeStats.put((Enum<T>) car.type, 1);
+        stats.put((Enum<T>) car.type, 1);
       }
     }
-    printTypeStats(typeStats);
+    printStats(stats);
   }
 
-  private static <T extends Enum <T>> void printTypeStats (Map<Enum<T>, Integer> stats) {
+  private static <T extends Enum<T>> void printStats(Map<Enum<T>, Integer> stats) {
     for (Enum<T> genericEnumValue : stats.keySet()) {
       System.out.printf("%s: %d ", genericEnumValue, stats.get(genericEnumValue));
     }
     System.out.println();
   }
 
-  public static void sameColor(List<Car> list) {
-  Map<CarColor, Integer> colorStats = new HashMap<>();
+  public static <T extends Enum<T>> void sameColor(List<Car> list) {
+    Map<Enum<T>, Integer> stats = new HashMap();
 
     for (Car car : list) {
-      if (colorStats.containsKey(car.color)) {
-        int previousAmount = colorStats.get(car.color);
-
+      if (stats.containsKey(car.color)) {
+        int previousAmount = stats.get(car.color);
+        stats.put((Enum<T>) car.color, ++previousAmount);
+      } else {
+        stats.put((Enum<T>) car.color, 1);
       }
     }
-
-
+    printStats(stats);
   }
 
+
 }
+
 
 
