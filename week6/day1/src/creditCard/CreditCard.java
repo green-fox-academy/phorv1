@@ -46,7 +46,7 @@ public class CreditCard implements CreditCardy {
     return String.format(FORMAT, getNameCardholder(), getCodeAccount(), getSumCVV());
   }
 
-  long randomGenerator(int amountToRandomise) {
+  public long randomGenerator(int amountToRandomise) {
     String randomCode = "";
     for (int i = 0; i < amountToRandomise; i++) {
       if (i == 0) {

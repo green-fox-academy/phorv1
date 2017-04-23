@@ -21,7 +21,7 @@ public class Reservation implements Reservationy{
     return String.format(TEXT, getCodeBooking(), getDowBooking());
   }
 
-  String randomGenerator(int amountToRandomise, List<String> getRandomFrom) {
+  public String randomGenerator(int amountToRandomise, List<String> getRandomFrom) {
     String randomCode = "";
     for (int i = 0; i < amountToRandomise; i++) {
       int randomIndex = (int) (Math.random() * getRandomFrom.size());
