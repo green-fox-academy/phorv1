@@ -7,18 +7,22 @@ public class Calculator {
 
   static <T extends Number> T add(T... numbers) {
     Double sum = Double.valueOf(0);
-    for (int i = 0; i < numbers.length; i++) {
+    int i = 0;
+    while (i < numbers.length) {
       T elements = numbers[i];
       sum += elements.doubleValue();
+      i++;
     }
     return (T) sum;
   }
 
   static <T extends Number> T subtract(T... numbers) {
     Double sum = Double.valueOf(0);
-    for (int i = 0; i < numbers.length; i++) {
+    int i = 0;
+    while (i < numbers.length) {
       T elemts = numbers[i];
       sum -= elemts.doubleValue();
+      i++;
     }
     return (T) sum;
   }
