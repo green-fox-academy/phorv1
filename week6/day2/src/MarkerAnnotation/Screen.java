@@ -1,12 +1,12 @@
 package MarkerAnnotation;
 
+@Monitor
 public class Screen {
 
-  public static void main(String[] args) {
-  }
-
   @Monitor
-  static void screen(){
-
+  static void markerAnnotations() {
   }
+  
+  @Monitor
+  int trier = 0;
 }
