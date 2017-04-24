@@ -3,10 +3,9 @@ package MarkerAnnotation;
 @Monitor
 public class Screen {
 
-  @Monitor
-  static void markerAnnotations() {
-  }
+  Size size;
 
-  @Monitor
-  int trier = 0;
+  public Screen(Size size) {
+    this.size = size;
+  }
 }
