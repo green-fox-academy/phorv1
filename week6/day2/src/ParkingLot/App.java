@@ -14,9 +14,50 @@ public class App {
       Car car = new Car(randomType(), randomColor());
       parkingLot.add(car);
     }
-    sameType(parkingLot, CarType.values());
+    sameType(parkingLot);
     sameColor(parkingLot);
+    mostFrequentCombo(parkingLot, CarColor.values(), CarType.values());
+  }
 
+  private static <T extends Enum<T>, S extends Enum<S>> void mostFrequentCombo(List<Car> carList,
+          Enum<T>[] values0, Enum<S>[] values1) {
+    Map<String, Integer> comboMap = new HashMap<>();
+
+    for (Car car : carList) {
+      String[] comboKeyElements = new String[2];
+      String comboKey = "";
+
+      for (Enum anEnum : car.getAllEnumFields()) {
+        if (anEnum.getClass().equals(values0[0].getClass())) {
+          comboKeyElements[0] = anEnum.name();
+        } else if (anEnum.getClass().equals(values1[0].getClass())) {
+          comboKeyElements[1] = anEnum.name();
+        }
+      }
+
+      comboKey = comboKeyElements[0] + " " + comboKeyElements[1];
+
+      if (comboMap.containsKey(comboKey)) {
+        int previousValue = comboMap.get(comboKey);
+        comboMap.put(comboKey, ++previousValue);
+      } else {
+        comboMap.put(comboKey, 1);
+      }
+    }
+    printComboStats(comboMap);
+  }
+
+  private static void printComboStats(Map<String, Integer> comboMap) {
+    String mostFrequentKey = "";
+    int mostFrequentValue = 0;
+
+    for (String comboKey : comboMap.keySet()) {
+      if (comboMap.get(comboKey) > mostFrequentValue) {
+        mostFrequentKey = comboKey;
+        mostFrequentValue = comboMap.get(comboKey);
+      }
+    }
+    System.out.printf("%s: %d%n", mostFrequentKey, comboMap.get(mostFrequentKey));
   }
 
   public static CarType randomType() {
@@ -33,7 +74,8 @@ public class App {
     return CarColor.values()[randomColor];
   }
 
-  public static <T extends Enum<T>> void sameType(List<Car> list, Enum<T>[] values) {
+
+  public static <T extends Enum<T>> void sameType(List<Car> list) {
     Map<Enum<T>, Integer> stats = new HashMap<>();
 
     for (Car car : list) {

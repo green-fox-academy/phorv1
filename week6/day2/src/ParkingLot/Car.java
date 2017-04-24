@@ -1,9 +1,19 @@
 package ParkingLot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
   CarType type;
   CarColor color;
+
+  public Enum[] getAllEnumFields() {
+    Enum[] allEnums = new Enum[2];
+    allEnums[0] = color;
+    allEnums[1] = type;
+    return allEnums;
+  }
 
   public Car(CarType type, CarColor color) {
     this.type = type;
