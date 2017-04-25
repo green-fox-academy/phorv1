@@ -3,7 +3,7 @@ import java.util.List;
 
 public class ArgumentHandler {
 
-  String usageInfo = "src/main/resources/usage.txt";
+  private String usageInfo = "src/main/resources/usage.txt";
 
   public void noArgument(String[] args) {
     if (args.length == 0) {
@@ -11,13 +11,14 @@ public class ArgumentHandler {
     }
   }
 
-
   public void checkWeatherInCountry(String givenArgs) {
-
+    String countryCode = givenArgs.toUpperCase();
+    String[] countryElement = getCountryData(countryCode);
   }
 
+
   public String[] getCountryData(String countryCode) {
-    List<String[]> dataList = FileHandler.fileReader(FileHandler.filePath);
+    List<String[]> dataList = FileHandler.fileReader(FileHandler.getFilePath());
     String[] returnArray = new String[dataList.get(0).length];
     for (String[] dataElements : dataList) {
       if (countryCode.equals(dataElements[0])) {

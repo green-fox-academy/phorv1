@@ -9,7 +9,11 @@ import java.util.List;
 
 public class FileHandler {
 
-  static String filePath = "src/main/resources/data.csv";
+  public static String getFilePath() {
+    return filePath;
+  }
+
+  private static String filePath = "src/main/resources/data.csv";
   static String exceptionError = "Something went wrong!";
 
   private static boolean isFileExists() {
