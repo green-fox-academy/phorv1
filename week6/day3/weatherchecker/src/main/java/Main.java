@@ -7,7 +7,7 @@ public class Main {
 
   public static void main(String[] args) {
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://mxrck-ser-programadores-apis.p.mashape.com/")
+            .baseUrl("https://simple-weather.p.mashape.com/")
             .build();
 
     WeatherChecker service = retrofit.create(WeatherChecker.class);
