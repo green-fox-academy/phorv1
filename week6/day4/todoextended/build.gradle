@@ -12,4 +12,15 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '3.0-rc2'
+    compile group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
+
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'Main'
+        )
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }

@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import joptsimple.OptionSpec;
 
-public class ToDoList {
+public class ArgumentHandler {
 
   Path tasksFilePath;
   Path usageFile;

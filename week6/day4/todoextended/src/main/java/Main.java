@@ -1,13 +1,11 @@
-import java.io.IOException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
-public class App {
+public class Main {
 
   public static void main(String[] args) {
 
-    ToDoList toDoList;
-    toDoList = new ToDoList();
+    ArgumentHandler toDoList = new ArgumentHandler();
     toDoList.noArgument(args);
     OptionParser parser = new OptionParser();
     parser.accepts("l");
