@@ -12,8 +12,8 @@ public class ToDoList {
   List<String> list;
   String error = "System error: Something went wrong!";
   String updatedList = "Here is your new list:";
-  String usage = "src/main/java/usage.txt";
-  String taskFile = "src/main/java/tasks.txt";
+  String usage = "src/main/resources/usage.txt";
+  String taskFile = "src/main/resources/tasks.txt";
 
   public void noArgument(String[] args) {
     try {
