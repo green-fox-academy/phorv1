@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 import java.time.MonthDay;
+import java.time.Period;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
@@ -28,13 +30,24 @@ public class BirthdayWithLocalDate implements BirthDayCalculator<LocalDate> {
   @Override
   public int calculateAgeInYears(LocalDate birthday) {
     // TODO - return how many years age the input date 'birthday' was
-    return 0;
+    return Period.between(birthday, LocalDate.now()).getYears();
   }
 
   @Override
   public int calculateDaysToNextAnniversary(LocalDate date) {
     // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
-    return 0;
+    int daysToNextAnniversary;
+
+    if (MonthDay.now().equals(MonthDay.from(date))) {
+      daysToNextAnniversary = 0;
+    } else {
+      boolean isAnniversaryNextYear = MonthDay.now().isAfter(MonthDay.from(date));
+
+      LocalDate nextAnniversary = LocalDate.of(LocalDate.now().getYear() + ((isAnniversaryNextYear) ? 1 : 0), MonthDay.from(date).getMonth(), MonthDay.from(date).getDayOfMonth());
+      daysToNextAnniversary = (int) ChronoUnit.DAYS.between(LocalDate.now(), nextAnniversary);
+    }
+
+    return daysToNextAnniversary;
   }
 
   public static void main(String[] args) {

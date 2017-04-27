@@ -1,3 +1,4 @@
+import java.time.Period;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -53,7 +54,7 @@ public class TestBirthdayCalculatorWithLocalDate {
 
   @Test
   public void testCalculateAgeInYears() throws Exception {
-    int expected = LocalDate.now().getYear() - EXPECTED_DATE.getYear();
+    int expected = Period.between(LocalDate.now(), EXPECTED_DATE).getYears();
     assertEquals(expected, birthdayCalculator.calculateAgeInYears(EXPECTED_DATE));
   }
 
