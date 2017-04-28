@@ -20,7 +20,7 @@ public class ArgumentHandler {
 
     if (options.has("c") && options.has("compare")) {
       System.out.println(getSecondCountryWeatherInfo(args));
-      System.out.println("Weather Difference is: " + ArgumentHandler.compare(getFirstCountryWeatherInfo(args), getSecondCountryWeatherInfo(args)) + " c");
+      System.out.println("Temperature Difference is: " + ArgumentHandler.compare(getFirstCountryWeatherInfo(args), getSecondCountryWeatherInfo(args)) + " c");
     }
   }
 
