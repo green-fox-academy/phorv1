@@ -15,6 +15,6 @@ public interface WeatherChecker {
   })
 
   @GET("weather")
-  Call<ResponseBody> getWeather(@Query("lat") String lat, @Query("lng") String lng);
+  Call<ResponseBody> setQueryCoordinates(@Query("lat") String lat, @Query("lng") String lng);
 }
 

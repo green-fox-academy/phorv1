@@ -14,11 +14,11 @@ public class Controller {
     return retrofit.create(WeatherChecker.class);
   }
 
-  static String printWeatherAtLocation(WeatherChecker weatherChecker, String latitude, String longitude) {
-    Call<ResponseBody> weatherResponse = weatherChecker.getWeather(latitude, longitude);
+  static String getWeatherAtLocation(WeatherChecker weatherChecker, String latitude, String longitude) {
+    Call<ResponseBody> weatherQuery = weatherChecker.setQueryCoordinates(latitude, longitude);
     String returnString = "";
     try {
-      returnString = weatherResponse.execute().body().string();
+      returnString = weatherQuery.execute().body().string();
     } catch (IOException e) {
       e.printStackTrace();
     }

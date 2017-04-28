@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
@@ -35,12 +33,12 @@ public class ArgumentHandler {
 
   String getFirstCountryWeatherInfo(String[] args) {
     LatitudeLongitudeDots coordinates = location.getDots(getOptionSetFromParser(args).valueOf("c").toString());
-    return Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
+    return Controller.getWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
   }
 
   String getSecondCountryWeatherInfo(String[] args) {
     LatitudeLongitudeDots coordinates = location.getDots(getOptionSetFromParser(args).valueOf("compare").toString());
-    return Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
+    return Controller.getWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
   }
 
   private static OptionSet getOptionSetFromParser(String[] args) {
