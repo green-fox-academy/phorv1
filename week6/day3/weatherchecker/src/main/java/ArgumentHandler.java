@@ -19,8 +19,6 @@ public class ArgumentHandler {
     }
 
     if (options.has("c") && options.has("compare")) {
-      String countryCode1 = options.valueOf("c").toString();
-      String countryCode2 = options.valueOf("compare").toString();
       System.out.println("Weather Difference is: " + ArgumentHandler.compare(getFirstCountryWeatherInfo(args), getSecondCountryWeatherInfo(args)) + " c");
     }
   }
@@ -34,15 +32,14 @@ public class ArgumentHandler {
   }
 
 
-  void getFirstCountryWeatherInfo(String[] args) {
+  String getFirstCountryWeatherInfo(String[] args) {
     LatitudeLongitudeDots coordinates = location.getDots(getOptionSetFromParser(args).valueOf("c").toString());
-    Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
+    return Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
   }
 
-  void getSecondCountryWeatherInfo(String[] args) {
-    String returnValue;
+  String getSecondCountryWeatherInfo(String[] args) {
     LatitudeLongitudeDots coordinates = location.getDots(getOptionSetFromParser(args).valueOf("compare").toString());
-    Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
+    return Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
   }
 
   private static OptionSet getOptionSetFromParser(String[] args) {
