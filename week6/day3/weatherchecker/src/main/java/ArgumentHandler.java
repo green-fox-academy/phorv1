@@ -15,11 +15,10 @@ public class ArgumentHandler {
     OptionSet options = getOptionSetFromParser(args);
 
     if (options.has("c")) {
-      getFirstCountryWeatherInfo(args);
+      System.out.println(getFirstCountryWeatherInfo(args));
     }
 
     if (options.has("c") && options.has("compare")) {
-      System.out.println(getFirstCountryWeatherInfo(args));
       System.out.println(getSecondCountryWeatherInfo(args));
       System.out.println("Weather Difference is: " + ArgumentHandler.compare(getFirstCountryWeatherInfo(args), getSecondCountryWeatherInfo(args)) + " c");
     }
