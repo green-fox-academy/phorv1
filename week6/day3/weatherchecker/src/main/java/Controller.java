@@ -26,9 +26,9 @@ public class Controller {
   }
 
   static void printUsage() {
-    for (String[] whatEver : FileHandler.fileReader(USAGE_FILE_PATH)) {
-      for (int i = 0; i < whatEver.length; i++) {
-        System.out.print(whatEver[i] + " ");
+    for (String[] fileElements : FileHandler.fileReader(USAGE_FILE_PATH)) {
+      for (int i = 0; i < fileElements.length; i++) {
+        System.out.print(fileElements[i] + " ");
       }
       System.out.println();
     }
