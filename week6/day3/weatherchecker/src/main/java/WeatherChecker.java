@@ -5,16 +5,16 @@ import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface WeatherChecker {
 
   @Headers({
           "X-Mashape-Key: JBlG23kdAKmsh03bIdIo7xKT2Brop143NgdjsnFCkLVMEOaZx6",
-          "Accept: application/json"
+          "Accept: text/plain"
   })
 
-  @GET("weather/forecast/{location}.json?lang=en")
-  Call<List<WeatherChecker>> listRepos(@Path("filepath") String user);
-
-
+  @GET("weather")
+  Call<ResponseBody> getWeather(@Query("lat") String lat, @Query("lng") String lng);
 }
+

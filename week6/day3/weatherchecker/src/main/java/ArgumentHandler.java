@@ -1,32 +1,55 @@
 import java.lang.reflect.Array;
-import java.util.List;
+import java.util.Arrays;
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
 
 public class ArgumentHandler {
 
-  private String usageInfo = "src/main/resources/usage.txt";
+  LatLngHandler location = new LatLngHandler();
 
-  public void noArgument(String[] args) {
+  public void handleArgs(String[] args) {
     if (args.length == 0) {
-      FileHandler.linePrinter(FileHandler.fileReader(usageInfo));
+      Controller.printUsage();
+    }
+
+    OptionSet options = getOptionSetFromParser(args);
+
+    if (options.has("c")) {
+      getFirstCountryWeatherInfo(args);
+    }
+
+    if (options.has("c") && options.has("compare")) {
+      String countryCode1 = options.valueOf("c").toString();
+      String countryCode2 = options.valueOf("compare").toString();
+      System.out.println("Weather Difference is: " + ArgumentHandler.compare(getFirstCountryWeatherInfo(args), getSecondCountryWeatherInfo(args)) + " c");
     }
   }
 
-  public void checkWeatherInCountry(String givenArgs) {
-    String countryCode = givenArgs.toUpperCase();
-    String[] countryElement = getCountryData(countryCode);
+  private static int compare(String firstCountryWeatherInfo, String secondCountryWeatherInfo) {
+    String[] firstStringArray = firstCountryWeatherInfo.split(" ");
+    String[] secondStringArray = secondCountryWeatherInfo.split(" ");
+    int firstNumber = Integer.parseInt(firstStringArray[0]);
+    int secondNumber = Integer.parseInt(secondStringArray[0]);
+    return firstNumber > secondNumber ? firstNumber - secondNumber : secondNumber - firstNumber;
   }
 
 
-  public String[] getCountryData(String countryCode) {
-    List<String[]> dataList = FileHandler.fileReader(FileHandler.getFilePath());
-    String[] returnArray = new String[dataList.get(0).length];
-    for (String[] dataElements : dataList) {
-      if (countryCode.equals(dataElements[0])) {
-        returnArray = dataElements;
-      }
-    }
-    return returnArray;
+  void getFirstCountryWeatherInfo(String[] args) {
+    LatitudeLongitudeDots coordinates = location.getDots(getOptionSetFromParser(args).valueOf("c").toString());
+    Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
   }
+
+  void getSecondCountryWeatherInfo(String[] args) {
+    String returnValue;
+    LatitudeLongitudeDots coordinates = location.getDots(getOptionSetFromParser(args).valueOf("compare").toString());
+    Controller.printWeatherAtLocation(Controller.createWeatherService(), coordinates.getLatitude(), coordinates.getLongitude());
+  }
+
+  private static OptionSet getOptionSetFromParser(String[] args) {
+    OptionParser parser = new OptionParser();
+    parser.accepts("c").withRequiredArg();
+    parser.accepts("compare").withRequiredArg();
+    return parser.parse(args);
+  }
+
 }
-
-

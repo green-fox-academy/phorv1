@@ -1,0 +1,4 @@
+Usage1:;WeatherChecker;[option];[argument];;;
+Example:;weatherchecker;[-c];[HU];Prints the current weather in Hungary;;
+Usage2:;WeatherChecker;[option];[argument];[option];[argument];
+Example:;WeatherCheker;[-c];[HU];[-compare];[AT];Prints the current weather difference between Hungary and Austria
