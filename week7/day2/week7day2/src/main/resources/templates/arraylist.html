@@ -8,11 +8,12 @@
 <body>
 <table>
   <!--/*@thymesVar id="bankAccounts" type="java.util.List<com.greenfoxacademy.Model.BankAccount>"*/-->
-  <tr th:each="bankAccount : ${bankAccounts}">
+  <tr th:each="bankAccount : ${bankAccounts}" th:style="${bankAccount.isKing()}? 'color:red; font-weight:bold;' : ''">
     <td th:text="${bankAccountStat.count} + ') '"></td>
     <td th:text="${bankAccount.getName()}"></td>
     <td th:text="${#numbers.formatDecimal(bankAccount.getBalance(),0,2)}"></td>
     <td th:text="${bankAccount.getAnimalType()}"></td>
+    <td th:text="${bankAccount.isKing()}? 'King' : '' "></td>
   </tr>
 </table>
 </body>
