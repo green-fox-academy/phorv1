@@ -15,4 +15,11 @@ public class BankAccountController {
     model.addAttribute(bankAccount);
     return "bank-account";
   }
+
+  @RequestMapping(value = "/Exercise4")
+  public String printMessage(Model model) {
+    String inputString = "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
+    model.addAttribute("inputString", inputString);
+    return "this-is-html";
+  }
 }
