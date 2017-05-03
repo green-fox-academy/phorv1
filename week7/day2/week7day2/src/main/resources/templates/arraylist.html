@@ -9,6 +9,7 @@
 <table>
   <!--/*@thymesVar id="bankAccounts" type="java.util.List<com.greenfoxacademy.Model.BankAccount>"*/-->
   <tr th:each="bankAccount : ${bankAccounts}">
+    <td th:text="${bankAccountStat.count} + ') '"></td>
     <td th:text="${bankAccount.getName()}"></td>
     <td th:text="${#numbers.formatDecimal(bankAccount.getBalance(),0,2)}"></td>
     <td th:text="${bankAccount.getAnimalType()}"></td>
