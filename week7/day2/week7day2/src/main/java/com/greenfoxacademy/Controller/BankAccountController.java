@@ -12,7 +12,7 @@ public class BankAccountController {
 
   @RequestMapping(value = "/Exercise1-3")
   public String bankAccount(Model model) {
-    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", true);
+    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", true, true);
     model.addAttribute(bankAccount);
     return "bank-account";
   }
@@ -27,11 +27,11 @@ public class BankAccountController {
   @RequestMapping(value = "/Exercise5-7")
   public String showArrayList(Model model) {
     List<BankAccount> bankAccounts = new ArrayList<>();
-    bankAccounts.add(new BankAccount("Pumba", 101, "warthog", false));
-    bankAccounts.add(new BankAccount("Timon", 100, "meerkat ", false));
-    bankAccounts.add(new BankAccount("Rafiki", 4000, "monkey", false));
-    bankAccounts.add(new BankAccount("Mufasa", 6789, "lion", true));
-    bankAccounts.add(new BankAccount("Zazu", 10, "hornbill", false));
+    bankAccounts.add(new BankAccount("Pumba", 101, "warthog", false, false));
+    bankAccounts.add(new BankAccount("Timon", 100, "meerkat ", false, true));
+    bankAccounts.add(new BankAccount("Rafiki", 4000, "monkey", false, true));
+    bankAccounts.add(new BankAccount("Mufasa", 6789, "lion", true, true));
+    bankAccounts.add(new BankAccount("Zazu", 10, "hornbill", false, false));
     model.addAttribute("bankAccounts", bankAccounts);
     return "arraylist";
   }

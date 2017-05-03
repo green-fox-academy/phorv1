@@ -13,7 +13,8 @@
     <td th:text="${bankAccount.getName()}"></td>
     <td th:text="${#numbers.formatDecimal(bankAccount.getBalance(),0,2)}"></td>
     <td th:text="${bankAccount.getAnimalType()}"></td>
-    <td th:text="${bankAccount.isKing()}? 'King' : '' "></td>
+    <td th:text="${bankAccount.isKing()}? 'King' : 'Peasant' "></td>
+    <td th:text="${bankAccount.isGoodGuy()}? 'Good Guy' : 'Bad Guy' "></td>
   </tr>
 </table>
 </body>

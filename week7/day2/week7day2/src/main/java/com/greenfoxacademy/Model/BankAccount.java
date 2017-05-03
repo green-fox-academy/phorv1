@@ -11,4 +11,5 @@ public class BankAccount {
   double balance;
   String animalType;
   boolean king;
+  boolean goodGuy;
 }
