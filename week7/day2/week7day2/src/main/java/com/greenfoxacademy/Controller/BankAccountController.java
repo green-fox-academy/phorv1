@@ -65,4 +65,12 @@ public class BankAccountController {
     bankAccountsList.get(id).setBalance(value);
     return "redirect:/Exercise10";
   }
+
+  @GetMapping(value = "/submit")
+  public String addNewBankAccount(String name, double balance, String animalType, boolean King, boolean GoodGuy){
+    BankAccount bankAccount = new BankAccount(name, balance, animalType, King, GoodGuy);
+  bankAccountsList.add(bankAccount);
+  return "redirect/Exercise10";
+  }
+
 }
