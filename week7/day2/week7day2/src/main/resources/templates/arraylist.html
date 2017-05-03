@@ -17,5 +17,20 @@
     <td th:text="${bankAccount.isGoodGuy()}? 'Good Guy' : 'Bad Guy' "></td>
   </tr>
 </table>
+<p></p>
+<table>
+  <!--/*@thymesVar id="bankAccounts" type="java.util.List<com.greenfoxacademy.Model.BankAccount>"*/-->
+  <tr th:each="bankAccount : ${bankAccounts}" th:style="${bankAccount.isKing()}? 'color:blue; font-weight:bold;' : ''">
+    <td th:text="${bankAccountStat.count} + ') '"></td>
+    <td th:text="${bankAccount.getName()}"></td>
+    <td th:text="${#numbers.formatDecimal(bankAccount.getBalance(),0,2)}"></td>
+    <td th:text="${bankAccount.getAnimalType()}"></td>
+    <td th:text="${bankAccount.isKing()}? 'King' : 'Peasant' "></td>
+    <td th:switch="${bankAccount.isGoodGuy()}">
+    <span th:case="true" th:text= "'Good Guy'"/>
+    <span th:case="false" th:text= "'Bad Guy'"/>
+    </td>
+  </tr>
+</table>
 </body>
 </html>

@@ -24,7 +24,7 @@ public class BankAccountController {
     return "this-is-html";
   }
 
-  @RequestMapping(value = "/Exercise5-7")
+  @RequestMapping(value = "/Exercise5-9")
   public String showArrayList(Model model) {
     List<BankAccount> bankAccounts = new ArrayList<>();
     bankAccounts.add(new BankAccount("Pumba", 101, "warthog", false, false));
@@ -35,4 +35,5 @@ public class BankAccountController {
     model.addAttribute("bankAccounts", bankAccounts);
     return "arraylist";
   }
+
 }
