@@ -2,8 +2,10 @@ package com.greenfoxacademy.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class BankAccount {
 
@@ -13,3 +15,5 @@ public class BankAccount {
   boolean king;
   boolean goodGuy;
 }
+
+
