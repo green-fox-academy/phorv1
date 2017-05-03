@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>Getting Started: Serving Web Content</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  </head>
 
-<body>
-<!--/*@thymesVar id="bankAccount" type="com.greenfoxacademy.Model.BankAccount"*/-->
-<p th:text="${bankAccount.getName()} + ${bankAccount.getBalance()} + ${bankAccount.getAnimalType()}"/>
-</body>
+  <body>
+  <!--/*@thymesVar id="bankAccount" type="com.greenfoxacademy.Model.BankAccount"*/-->
+    <span th:text="${bankAccount.getName()} + ${#numbers.formatDecimal(bankAccount.getBalance(),0,2)} + ${bankAccount.getAnimalType()}"/>
+  </body>
 </html>
