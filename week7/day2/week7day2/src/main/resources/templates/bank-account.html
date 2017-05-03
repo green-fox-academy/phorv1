@@ -7,6 +7,6 @@
 
 <body>
 <!--/*@thymesVar id="bankAccount" type="com.greenfoxacademy.Model.BankAccount"*/-->
-<p th:text="'Hello, ' + ${bankAccount.getName()} + ${bankAccount.getBalance()} + ${bankAccount.getAnimalType()} + '!'"/>
+<p th:text="${bankAccount.getName()} + ${bankAccount.getBalance()} + ${bankAccount.getAnimalType()}"/>
 </body>
 </html>

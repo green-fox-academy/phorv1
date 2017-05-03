@@ -8,6 +8,6 @@ import lombok.Getter;
 public class BankAccount {
 
   String name;
-  float balance;
+  int balance;
   String animalType;
 }
