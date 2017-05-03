@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<!--/*@thymesVar id="bankAccount" type="com.greenfoxacademy.Model.BankAccount"*/-->
+<p th:text="'Hello, ' + ${bankAccount.getName()} + ${bankAccount.getBalance()} + ${bankAccount.getAnimalType()} + '!'"/>
+</body>
+</html>
