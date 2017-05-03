@@ -7,6 +7,9 @@
 
   <body>
   <!--/*@thymesVar id="bankAccount" type="com.greenfoxacademy.Model.BankAccount"*/-->
-    <span th:text="${bankAccount.getName()} + ${#numbers.formatDecimal(bankAccount.getBalance(),0,2)} + ${bankAccount.getAnimalType()}"/>
+    <span th:text="${bankAccount.getName()} + ' ' +
+     ${#numbers.formatDecimal(bankAccount.getBalance(),0,2)} + ' ' +
+     ${#strings.toUpperCase(#strings.substring(bankAccount.getAnimalType(), 0, 1))} +
+     ${#strings.substring(bankAccount.getAnimalType(), 1)}"/>
   </body>
 </html>
