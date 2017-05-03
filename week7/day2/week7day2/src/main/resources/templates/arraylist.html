@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<table>
+  <!--/*@thymesVar id="bankAccounts" type="java.util.List<com.greenfoxacademy.Model.BankAccount>"*/-->
+  <tr th:each="bankAccount : ${bankAccounts}">
+    <td th:text="${bankAccount.getName()}"></td>
+    <td th:text="${#numbers.formatDecimal(bankAccount.getBalance(),0,2)}"></td>
+    <td th:text="${bankAccount.getAnimalType()}"></td>
+  </tr>
+</table>
+</body>
+</html>
