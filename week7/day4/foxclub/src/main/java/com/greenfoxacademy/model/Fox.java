@@ -1,8 +1,16 @@
 package com.greenfoxacademy.model;
 
-/**
- * Created by Lenovo on 2017.05.04..
- */
+import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Fox {
+
+  private String name;
+  private List<Trick> listOfTricks;
+  private Food food;
+  private Drink drink;
 
 }
