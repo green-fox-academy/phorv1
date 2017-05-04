@@ -11,5 +11,23 @@
   <li><a th:href="@{'/nutritionstore'}">Nutrition Store</a></li>
 </ul>
 <img src="/greenfox.png"/>
+<table>
+  <form action="/change-trick">
+    <tr>
+      <th>Tricks</th>
+    </tr>
+    <tr>
+      <td>
+        <select name="addTrick">
+          <option th:each="trick : ${allTricksList}"
+                    th:value="${trick}"
+                    th:text="${trick}">
+          </option>
+        </select>
+      </td>
+      <td><input type="submit" value="Learn"/></td>
+    </tr>
+  </form>
+</table>
 </body>
 </html>

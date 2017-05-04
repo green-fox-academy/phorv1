@@ -11,5 +11,18 @@
   <li><a th:href="@{'/nutritionstore'}">Nutrition Store</a></li>
 </ul>
 <img src="/greenfox.png"/>
+<table>
+  <form action="/change-nutrition">
+    <tr>
+      <th>Food</th>
+      <th>Drink</th>
+    </tr>
+    <tr>
+      <td><input type="list" name="food"/></td>
+      <td><input type="list" name="drink"/></td>
+      <td><input type="submit" value="Change"/></td>
+    </tr>
+  </form>
+</table>
 </body>
 </html>

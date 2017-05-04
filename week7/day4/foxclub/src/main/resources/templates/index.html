@@ -11,11 +11,11 @@
   <li><a th:href="@{'/nutritionstore'}">Nutrition Store</a></li>
 </ul>
 <img src="/greenfox.png"/>
-<p>This is Mr. Fox. Currently living on salad and water. He Knows 0 tricks.</p>
+<p th:text="|This is ${fox.name}. Currently living on ${fox.food} and ${fox.drink}. He Knows ${fox.listOfTricks.size()} tricks.|"></p>
 <h1>Known tricks</h1>
-<ul>
-  <li>write HTML</li>
-  <li>code in Java</li>
-</ul>
+<ol>
+  <p th:if="${fox.listOfTricks.size()} == 0" th:text="|You know zero tricks. Go and learn some|"></p>
+  <li th:each="trickElement : ${fox.listOfTricks}" th:text="${trickElement}"></li>
+</ol>
 </body>
 </html>
