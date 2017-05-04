@@ -6,24 +6,36 @@
 </head>
 
 <body>
-<form action="/submit">
-  <input type="text" name="name"/>
-  <input type="text" name="balance"/>
-  <input type="text" name="animalType"/>
-  <input type="text" name="King"/>
-  <input type="text" name="GoodGuy"/>
-  <input type="submit" value="submit"/>
-</form>
+<table>
+  <form action="/submit">
+    <tr>
+      <th>Name</th>
+      <th>Balance</th>
+      <th>Animal Type</th>
+      <th>King(true or false)</th>
+      <th>Good Guy(T or F)</th>
+    </tr>
+    <tr>
+      <td><input type="text" name="name"/></td>
+      <td><input type="number" name="balance"/></td>
+      <td><input type="text" name="animalType"/></td>
+      <td><input type="text" name="King"/></td>
+      <td><input type="text" name="GoodGuy"/></td>
+      <td><input type="submit" value="submit"/></td>
+    </tr>
+  </form>
+</table>
 <table>
   <!--/*@thymesVar id="bankAccounts" type="java.util.List<com.greenfoxacademy.Model.BankAccount>"*/-->
-  <tr th:each="bankAccount : ${bankAccounts}" th:style="${bankAccount.isKing()}? 'color:red; font-weight:bold;' : ''">
+  <tr th:each="bankAccount : ${bankAccounts}"
+      th:style="${bankAccount.isKing()}? 'color:red; font-weight:bold;' : ''">
     <td th:text="${bankAccountStat.count} + ') '"></td>
     <td th:text="${bankAccount.getName()}"></td>
     <td th:text="${#numbers.formatDecimal(bankAccount.getBalance(),0,2)}"></td>
     <td th:text="${bankAccount.getAnimalType()}"></td>
     <td th:text="${bankAccount.isKing()}? 'King' : 'Peasant' "></td>
     <td th:text="${bankAccount.isGoodGuy()}? 'Good Guy' : 'Bad Guy' "></td>
-    <td> <a th:href="${'/hit?id=' + bankAccountStat.index}">+10</a></td>
+    <td><a th:href="${'/hit?id=' + bankAccountStat.index}">+10</a></td>
   </tr>
 </table>
 <p></p>
