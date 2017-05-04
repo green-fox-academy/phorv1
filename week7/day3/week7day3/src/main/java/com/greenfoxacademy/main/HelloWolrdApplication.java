@@ -1,6 +1,7 @@
-package com.greenfoxacademy;
+package com.greenfoxacademy.main;
 
 import com.greenfoxacademy.config.HelloWorldConfig;
+import com.greenfoxacademy.model.HelloWorld;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
