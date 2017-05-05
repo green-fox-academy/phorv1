@@ -14,7 +14,7 @@
   <li><a th:href="@{'/nutritionstore'}">Nutrition Store</a></li>
 </ul>
 <img src="/animatedfox.gif" width="400px" height="300px"/>
-<p th:text="|Hello, my name is ${fox.name}. Currently living on ${fox.food} and ${fox.drink}. I know ${fox.listOfTricks.size()} tricks.|"></p>
+<p th:text="|Hello, my name is ${fox.name}. Currently living on ${fox.food} and ${fox.drink}. I know ${fox.listOfTricks.size() + fox.advancedTricks.size()} tricks.|"></p>
 <h1>Known tricks</h1>
 <h2>Basic tricks</h2>
 <ol>
