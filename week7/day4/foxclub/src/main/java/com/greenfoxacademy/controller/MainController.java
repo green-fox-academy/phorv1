@@ -14,13 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
+    String[] listOfTricks = {"Write HTML", "Code in Java", "Jump", "Swim", "Teleport", "Teach", "Fly", "Kill", "Read Mind"};
+
   @Autowired
   Fox fox;
-  List<String> allTricks;
-
-  public MainController() {
-    this.allTricks = Arrays.asList("Write HTML", "Code in Java", "Jump", "Swim", "Teleport", "Teach", "Fly", "Kill", "Read Mind");
-  }
 
   @RequestMapping(value = "/")
   public ModelAndView infoPage(){
@@ -40,9 +37,20 @@ public class MainController {
   @RequestMapping(value = "/trickcentre")
   public ModelAndView trickCentre(){
     ModelAndView m = new ModelAndView();
-    m.addObject("allTricksList", allTricks);
+    List<String> remainingTricks = getRemainingTricks(listOfTricks);
+    m.addObject("listOfTricks", remainingTricks);
     m.setViewName("trickcentre");
     return m;
+  }
+
+  private List<String> getRemainingTricks(String[] listOfTricks) {
+    List<String> returnList = new ArrayList<>();
+    for (String trick : listOfTricks ){
+      if(!fox.knowsTrick(trick)) {
+        returnList.add(trick);
+      }
+    }
+    return returnList;
   }
 
   @RequestMapping(value = "/change-nutrition")
@@ -57,6 +65,8 @@ public class MainController {
     fox.addTrick(addTrick);
     return "redirect:";
   }
+
+
 
 }
 

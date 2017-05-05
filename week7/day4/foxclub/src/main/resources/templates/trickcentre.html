@@ -21,9 +21,9 @@
     <tr>
       <td>
         <select name="addTrick">
-          <option th:each="trick : ${allTricksList}"
-                    th:value="${trick}"
-                    th:text="${trick}">
+          <option th:each="trick : ${listOfTricks}"
+                  th:value="${trick}"
+                  th:text="${trick}">
           </option>
         </select>
       </td>
