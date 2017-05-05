@@ -14,11 +14,11 @@
 <img src="/learning.gif" width="220px" height="300px"/>
 <h2>I am ready commander. Teach Me! </h2>
 <table>
-  <form action="/change-trick">
+  <form action="/change-trick" th:if="${listOfTricks.size() == 0}" th:text="'You know everything! I can\'t teach you more!'">
     <tr>
       <th>Tricks</th>
     </tr>
-    <tr>
+    <tr >
       <td>
         <select name="addTrick">
           <option th:each="trick : ${listOfTricks}"
