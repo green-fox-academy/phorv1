@@ -16,10 +16,17 @@
 <img src="/animatedfox.gif" width="400px" height="300px"/>
 <p th:text="|Hello, my name is ${fox.name}. Currently living on ${fox.food} and ${fox.drink}. I know ${fox.listOfTricks.size()} tricks.|"></p>
 <h1>Known tricks</h1>
+<h2>Basic tricks</h2>
 <ol>
   <p th:if="${fox.listOfTricks.size()} == 0"
      th:text="|I know zero tricks. Please, teach some!|"></p>
   <li th:each="trickElement : ${fox.listOfTricks}" th:text="${trickElement}"></li>
 </ol>
+<h2>Advanced tricks</h2>
+<ul>
+  <p th:if="${fox.advancedTricks.size()} == 0">
+    <a th:href="@{'/trickcentre'}">Advanced Trick Centre</a></p>
+  <li th:each="trickElement : ${fox.advancedTricks}" th:text="${trickElement}"></li>
+</ul>
 </body>
 </html>

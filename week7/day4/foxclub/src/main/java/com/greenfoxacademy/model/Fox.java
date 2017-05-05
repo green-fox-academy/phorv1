@@ -11,12 +11,14 @@ public class Fox {
 
   private String name;
   private ArrayList<String> listOfTricks;
+  private ArrayList<String> advancedTricks;
   private String food;
   private String drink;
 
   public Fox() {
     this.name = "Vukk";
     listOfTricks = new ArrayList<>();
+    advancedTricks = new ArrayList<>();
     this.food = "nothing";
     this.drink = "nothing";
   }
@@ -25,12 +27,25 @@ public class Fox {
     listOfTricks.add(trick);
   }
 
+  public void addAdvancedTrick(String trick) {
+    advancedTricks.add(trick);
+  }
+
   public int knownTricks() {
     return listOfTricks.size();
   }
 
   public boolean knowsTrick(String trick) {
     for (String trickElement : listOfTricks) {
+      if (trickElement.equals(trick)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean knowsAdvancedTrick(String trick) {
+    for (String trickElement : advancedTricks) {
       if (trickElement.equals(trick)) {
         return true;
       }

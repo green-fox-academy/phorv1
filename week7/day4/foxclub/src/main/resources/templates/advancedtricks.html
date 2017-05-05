@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <style>body{background-color: cornsilk}</style>
+  <style>body{background-color: azure}</style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title>Title</title>
 </head>
@@ -14,25 +14,25 @@
 <img src="/learning.gif" width="220px" height="300px"/>
 <h2>I am ready commander. Teach Me! </h2>
 <table>
-  <th:block th:if="${listOfTricks.size() != 0}">
-  <form action="/change-trick">
-    <tr>
-      <th>Tricks</th>
-    </tr>
-    <tr >
-      <td>
-        <select name="addTrick">
-          <option th:each="trick : ${listOfTricks}"
-                  th:value="${trick}"
-                  th:text="${trick}">
-          </option>
-        </select>
-      </td>
-      <td><input type="submit" value="Learn"/></td>
-    </tr>
-  </form>
+  <th:block th:if="${advancedTricks.size() != 0}">
+    <form action="/change-advanced-trick">
+      <tr>
+        <th>Advanced Tricks</th>
+      </tr>
+      <tr >
+        <td>
+          <select name="addTrick">
+            <option th:each="trick : ${advancedTricks}"
+                    th:value="${trick}"
+                    th:text="${trick}">
+            </option>
+          </select>
+        </td>
+        <td><input type="submit" value="Learn"/></td>
+      </tr>
+    </form>
   </th:block>
-  <th:block th:if="${listOfTricks.size() == 0}">
+  <th:block th:if="${advancedTricks.size() == 0}">
     <tr>
       <td>
         You can't learn new tricks. You already know everything!
