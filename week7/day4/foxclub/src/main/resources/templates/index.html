@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <style>body {
+    background-color: cornsilk
+  }</style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title>Title</title>
 </head>
@@ -10,11 +13,12 @@
   <li><a th:href="@{'/trickcentre'}">Trick Centre</a></li>
   <li><a th:href="@{'/nutritionstore'}">Nutrition Store</a></li>
 </ul>
-<img src="/greenfox.png"/>
-<p th:text="|This is ${fox.name}. Currently living on ${fox.food} and ${fox.drink}. He Knows ${fox.listOfTricks.size()} tricks.|"></p>
+<img src="/animatedfox.gif" width="400px" height="300px"/>
+<p th:text="|Hello, my name is ${fox.name}. Currently living on ${fox.food} and ${fox.drink}. I know ${fox.listOfTricks.size()} tricks.|"></p>
 <h1>Known tricks</h1>
 <ol>
-  <p th:if="${fox.listOfTricks.size()} == 0" th:text="|You know zero tricks. Go and learn some|"></p>
+  <p th:if="${fox.listOfTricks.size()} == 0"
+     th:text="|I know zero tricks. Please, teach some!|"></p>
   <li th:each="trickElement : ${fox.listOfTricks}" th:text="${trickElement}"></li>
 </ol>
 </body>
