@@ -1,0 +1,31 @@
+body {
+  font-family: helvetica;
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+  height: 100%;
+  text-align: left;
+}
+
+table {
+  position: relative;
+  width: 400px;
+  margin: 10px auto;
+  background: #66b3ff ;
+  text-align: center;
+}
+
+image {
+  position: relative;
+  width: 300px;
+  margin: auto 250px;
+  align-self: center;
+}
+
+h1, h3 {
+  text-align: center;
+}

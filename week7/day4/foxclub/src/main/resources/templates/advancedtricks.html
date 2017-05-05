@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <style>body{background-color: azure}</style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" type="text/css" media="all" href="/index.css/"/>
   <title>Title</title>
 </head>
 <body>
-<ul>
-  <li><a th:href="@{'/'}">Information</a></li>
-  <li><a th:href="@{'/trickcentre'}">Trick Centre</a></li>
-  <li><a th:href="@{'/nutritionstore'}">Nutrition Store</a></li>
-</ul>
-<img src="/learning.gif" width="220px" height="300px"/>
-<h2>I am ready commander. Teach Me! </h2>
+<h3>
+  <span><a th:href="@{'/'}">Information</a></span>
+  <span><a th:href="@{'/trickcentre'}">Trick Centre</a></span>
+  <span><a th:href="@{'/nutritionstore'}">Nutrition Store</a></span>
+</h3>
+<h3><img src="/trickadvanced.png" width="310px" height="400px"/></h3>
+<h3>I am ready commander. Teach Me! </h3>
 <table>
   <th:block th:if="${advancedTricks.size() != 0}">
     <form action="/change-advanced-trick">
