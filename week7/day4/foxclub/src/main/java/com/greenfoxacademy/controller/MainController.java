@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-    String[] listOfTricks = {"Write HTML", "Code in Java", "Jump", "Swim", "Teleport", "Teach", "Fly", "Kill", "Read Mind"};
+    String[] listOfTricks = {"Write HTML", "Code in Java", "Jump", "Swim", "Teach", "Fly", "Kill", "Read Mind",};
+    String[] buildRocket = {"Build Rocket"};
+    String[] flyToMars = {"Fly to Mars"};
 
   @Autowired
   Fox fox;

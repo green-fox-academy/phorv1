@@ -14,7 +14,8 @@
 <img src="/learning.gif" width="220px" height="300px"/>
 <h2>I am ready commander. Teach Me! </h2>
 <table>
-  <form action="/change-trick" th:if="${listOfTricks.size() == 0}" th:text="'You know everything! I can\'t teach you more!'">
+  <th:block th:if="${listOfTricks.size() != 0}">
+  <form action="/change-trick">
     <tr>
       <th>Tricks</th>
     </tr>
@@ -30,6 +31,14 @@
       <td><input type="submit" value="Learn"/></td>
     </tr>
   </form>
+  </th:block>
+  <th:block th:if="${listOfTricks.size() == 0}">
+    <tr>
+      <td>
+        You can't learn new things. You already know everything!
+      </td>
+    </tr>
+  </th:block>
 </table>
 </body>
 </html>
