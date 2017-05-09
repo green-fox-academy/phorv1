@@ -17,8 +17,8 @@ public class Todo {
   long id;
 
   String title;
-  boolean isUrgent;
-  boolean isDone;
+  boolean isUrgent = false;
+  boolean isDone = false;
 
   public Todo() {
   }
