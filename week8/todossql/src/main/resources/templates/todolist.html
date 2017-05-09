@@ -3,11 +3,46 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Title</title>
+  <style>
+    table {
+      font-family: "Lucida Handwriting",  sans-serif;
+      width:100%;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    table tr:nth-child(even) {
+      background-color: #eee;
+    }
+    table tr:nth-child(odd) {
+      background-color:#fff;
+    }
+    table th {
+      background-color: black;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 <h1>Todos for today:</h1>
-<ul th:each="todos : ${todos}">
-  <li th:text="${todos.title}">  </li>
-</ul>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Action</th>
+    <th>Done</th>
+    <th>Urgent</th>
+  </tr>
+  <tr th:each="todo : ${todos}">
+    <td th:text="${todo.id}"></td>
+    <td th:text="${todo.title}"></td>
+    <td th:text="${todo.isDone() == true} ? 'Done' : 'UnDone'"></td>
+    <td th:text="${todo.isUrgent() == true} ? 'Done' : 'UnDone'"></td>
+  </tr>
+</table>
 </body>
 </html>

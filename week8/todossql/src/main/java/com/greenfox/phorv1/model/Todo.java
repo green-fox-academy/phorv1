@@ -12,19 +12,20 @@ import lombok.Setter;
 @Setter
 public class Todo {
 
-  public Todo() {
-  }
-
-  public Todo(String title) {
-    this.title = title;
-  }
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
 
   String title;
-  boolean isUrgent = false;
-  boolean isDone = false;
+  boolean isUrgent;
+  boolean isDone;
 
+  public Todo() {
+  }
+
+  public Todo(String title, boolean isUrgent, boolean isDone) {
+    this.title = title;
+    this.isUrgent = isUrgent;
+    this.isDone = isDone;
+  }
 }
