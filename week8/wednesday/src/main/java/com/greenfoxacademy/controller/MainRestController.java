@@ -1,6 +1,7 @@
 package com.greenfoxacademy.controller;
 
 import com.greenfoxacademy.model.Appenda;
+import com.greenfoxacademy.model.Array;
 import com.greenfoxacademy.model.Doubling;
 import com.greenfoxacademy.model.Dountil;
 import com.greenfoxacademy.model.ErrorMessage;
@@ -45,23 +46,32 @@ public class MainRestController {
 
   @GetMapping(value = "/appenda/{appendable}")
   public Appenda appenda(@PathVariable(value = "appendable") String appenda) {
-    return  new Appenda(appenda);
+    return new Appenda(appenda);
   }
 
   @PostMapping(value = "/dountil/{what}")
-  public RestMessageObject dountil(@RequestBody Dountil dountil, @PathVariable(value = "what") String what) {
-  if (dountil.notNegative()) {
-    if (what.equals("sum")) {
-      dountil.sum();
-    } else if (what.equals("factor")) {
-      dountil.factor();
+  public RestMessageObject dountil(@RequestBody Dountil dountil,
+          @PathVariable(value = "what") String what) {
+    if (dountil.notNegative()) {
+      if (what.equals("sum")) {
+        dountil.sum();
+      } else if (what.equals("factor")) {
+        dountil.factor();
+      } else {
+        return new ErrorMessage("Please enter 'sum' or 'factor'!");
+      }
     } else {
-      return new ErrorMessage("Please enter 'sum' or 'factor'!");
+      return new ErrorMessage("Please provide a number!");
     }
-  } else {
-    return new ErrorMessage("Please provide a number!");
-  }
     return dountil;
+  }
+
+  @PostMapping(value = "/arrays")
+  public Array arrays(@RequestBody Array array) {
+      array.sum();
+      array.multiply();
+      array.doubleList();
+    return array;
   }
 }
 
