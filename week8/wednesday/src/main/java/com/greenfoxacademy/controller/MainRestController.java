@@ -2,6 +2,7 @@ package com.greenfoxacademy.controller;
 
 import com.greenfoxacademy.model.Appenda;
 import com.greenfoxacademy.model.Array;
+import com.greenfoxacademy.model.ArrayReturn;
 import com.greenfoxacademy.model.Doubling;
 import com.greenfoxacademy.model.Dountil;
 import com.greenfoxacademy.model.ErrorMessage;
@@ -67,10 +68,13 @@ public class MainRestController {
   }
 
   @PostMapping(value = "/arrays")
-  public Array arrays(@RequestBody Array array) {
+  public RestMessageObject arrays(@RequestBody Array array) {
+    if (array.whatGetter().equals("double")) {
+      return array.doubleList();
+    } else {
       array.sum();
       array.multiply();
-      array.doubleList();
+    }
     return array;
   }
 }

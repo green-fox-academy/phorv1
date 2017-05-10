@@ -5,14 +5,21 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Array {
+public class Array implements RestMessageObject {
 
   @Setter
   String what;
   @Setter
   List<Integer> numbers = new ArrayList<>();
   @Getter
-  List<Integer> result = new ArrayList<>();
+  int result;
+  List<Integer> resultList = new ArrayList<>();
+
+
+  public String whatGetter() {
+    return what;
+  }
+
 
   public void sum() {
     if (what.equals("sum")) {
@@ -20,7 +27,7 @@ public class Array {
       for (int i = 0; i < numbers.size(); i++) {
         sum += numbers.get(i);
       }
-      result.add(sum);
+      result = sum;
     }
   }
 
@@ -30,18 +37,19 @@ public class Array {
       for (int i = 0; i < numbers.size(); i++) {
         multiply *= numbers.get(i);
       }
-      result.add(multiply);
+      result = multiply;
     }
   }
 
-  public void doubleList() {
+  public ArrayReturn doubleList() {
     if (what.equals("double")) {
       int toDouble = 2;
       for (int i = 0; i < numbers.size(); i++) {
         toDouble *= numbers.get(i);
-        result.add(toDouble);
+        resultList.add(toDouble);
         toDouble = 2;
       }
     }
+      return new ArrayReturn(resultList);
   }
 }
