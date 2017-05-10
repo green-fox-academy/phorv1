@@ -1,12 +1,18 @@
 package com.greenfoxacademy.controller;
 
-import com.greenfoxacademy.controller.model.Appenda;
-import com.greenfoxacademy.controller.model.Doubling;
-import com.greenfoxacademy.controller.model.Greeter;
+import com.greenfoxacademy.model.Appenda;
+import com.greenfoxacademy.model.Doubling;
+import com.greenfoxacademy.model.Dountil;
+import com.greenfoxacademy.model.ErrorMessage;
+import com.greenfoxacademy.model.Greeter;
+import com.greenfoxacademy.model.RestMessageObject;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +24,12 @@ public class MainRestController {
   public String handleMissingInput(MissingServletRequestParameterException e) {
     return "Error: missing input parameter: " + e.getMessage();
   }
+
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  public ErrorMessage handleHttpMessageNotReadable(HttpMessageNotReadableException e) {
+    return new ErrorMessage("Please provide a number!");
+  }
+
 
   @GetMapping(value = "/doubling")
   public Doubling doubling(@RequestParam(value = "input") int input) {
@@ -36,4 +48,20 @@ public class MainRestController {
     return  new Appenda(appenda);
   }
 
+  @PostMapping(value = "/dountil/{what}")
+  public RestMessageObject dountil(@RequestBody Dountil dountil, @PathVariable(value = "what") String what) {
+  if (dountil.notNegative()) {
+    if (what.equals("sum")) {
+      dountil.sum();
+    } else if (what.equals("factor")) {
+      dountil.factor();
+    } else {
+      return new ErrorMessage("Please enter 'sum' or 'factor'!");
+    }
+  } else {
+    return new ErrorMessage("Please provide a number!");
+  }
+    return dountil;
+  }
 }
+

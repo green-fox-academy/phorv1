@@ -1,4 +1,4 @@
-package com.greenfoxacademy.controller.model;
+package com.greenfoxacademy.model;
 
 import lombok.Getter;
 
