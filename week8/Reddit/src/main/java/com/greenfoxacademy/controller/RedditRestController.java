@@ -35,5 +35,13 @@ public class RedditRestController {
     postRepository.save(post);
     return post;
   }
+
+  @PostMapping(value = "/posts/{id}/downvote")
+  public Post downVote(@PathVariable (value = "id") long id) {
+    Post post = postRepository.findOne(id);
+    post.downVote();
+    postRepository.save(post);
+    return post;
+  }
 }
 

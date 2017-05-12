@@ -29,6 +29,10 @@ public class Post {
   public void upVote() {
     score++;
   }
+
+  public void downVote() {
+    score--;
+  }
 }
 
 
