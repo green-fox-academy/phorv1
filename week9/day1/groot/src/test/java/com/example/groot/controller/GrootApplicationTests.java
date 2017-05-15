@@ -42,7 +42,7 @@ public class GrootApplicationTests {
 	}
 
 	@Test
-	public void testStatusOk() throws Exception {
+	public void testStatusOkGroot() throws Exception {
 		mockMvc.perform(get("/groot").param("message", "some"))
 						.andExpect(status().isOk())
 						.andExpect(jsonPath("$.received", is("some")))
@@ -50,10 +50,26 @@ public class GrootApplicationTests {
 	}
 
 	@Test
-  public void sameReceivedAsExpected() throws Exception {
+  public void sameReceivedAsExpectedGroot() throws Exception {
     mockMvc.perform(get("/groot").param("message", ""))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.error", is("I am Groot!")));
+  }
+
+  @Test
+  public void testStatusOkYondu() throws Exception {
+    mockMvc.perform(get("/yondu").param("distance", "100.0").param("time", "10.0"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.distance", is(100.0)))
+            .andExpect(jsonPath("$.time", is(10.0)))
+            .andExpect(jsonPath("$.speed", is(10.0)));
+  }
+
+  @Test
+  public void zeroReceivedAsExpectedYondu() throws Exception {
+    mockMvc.perform(get("/yondu").param("distance", "100.0").param("time", "0"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.error", is("Distance or Time cannot be zero!")));
   }
 }
 
