@@ -1,5 +1,6 @@
 package com.example.groot.controller;
 
+import com.example.groot.model.Drax;
 import com.example.groot.model.Rocket;
 import com.example.groot.model.RocketFill;
 import com.example.groot.model.Yondu;
@@ -24,6 +25,8 @@ public class GuardianRestController {
   Rocket rocket;
   @Autowired
   RocketFill rocketFill;
+  @Autowired
+  Drax drax;
 
   @ExceptionHandler(value = MissingServletRequestParameterException.class)
   public ErrorHandling handleMissingRequestParam() {
@@ -71,4 +74,10 @@ public class GuardianRestController {
     rocketFill.setReady();
     return rocketFill;
   }
+
+  @RequestMapping(value = "/drax")
+  public GuardianRepository calorieDrax() {
+    return drax;
+  }
+
 }
