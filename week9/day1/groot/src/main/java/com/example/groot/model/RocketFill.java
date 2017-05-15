@@ -32,10 +32,6 @@ public class RocketFill implements GuardianRepository {
   }
 
   public void setReady() {
-    if (shipstatus.equals("full")) {
-    ready = true;
-    } else {
-      ready = false;
-    }
+    ready = shipstatus.equals("full");
   }
 }
