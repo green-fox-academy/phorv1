@@ -34,10 +34,10 @@ public class GuardianRestController {
   }
 
   @RequestMapping(value = "/yondu")
-  public GuardianRepository calculateSpeed(@RequestParam(value = "distance") double distance,
-          @RequestParam(value = "time") double time) {
-    if (distance == 0 || time == 0) {
-      return new ErrorHandling("Distance or Time cannot be zero!");
+  public GuardianRepository calculateSpeed(@RequestParam(value = "distance") Double distance,
+          @RequestParam(value = "time") Double time) {
+    if (distance == null || time == null) {
+      return new ErrorHandling("Distance or Time cannot be null!");
     }
     yondu.setDistance(distance);
     yondu.setTime(time);

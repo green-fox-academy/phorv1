@@ -67,7 +67,7 @@ public class GrootApplicationTests {
 
   @Test
   public void zeroReceivedAsExpectedYondu() throws Exception {
-    mockMvc.perform(get("/yondu").param("distance", "100.0").param("time", "0"))
+    mockMvc.perform(get("/yondu").param("distance", "100.0").param("time", ""))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.error", is("Distance or Time cannot be zero!")));
   }
