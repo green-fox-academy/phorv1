@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class Guardian implements GuardianRepository {
 
   String received;
-  String trasnlated;
+  String translated;
 
   public Guardian(String received) {
     this.received = received;
-    trasnlated = "I am Groot!";
+    translated = "I am Groot!";
   }
 }
 
