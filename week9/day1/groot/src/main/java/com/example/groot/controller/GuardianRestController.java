@@ -1,5 +1,7 @@
 package com.example.groot.controller;
 
+import com.example.groot.model.Rocket;
+import com.example.groot.model.RocketFill;
 import com.example.groot.model.Yondu;
 import com.example.groot.service.ErrorHandling;
 import com.example.groot.model.Groot;
@@ -18,6 +20,10 @@ public class GuardianRestController {
   ErrorHandling errorHandling;
   @Autowired
   Yondu yondu;
+  @Autowired
+  Rocket rocket;
+  @Autowired
+  RocketFill rocketFill;
 
   @ExceptionHandler(value = MissingServletRequestParameterException.class)
   public ErrorHandling handleMissingRequestParam() {
@@ -43,5 +49,23 @@ public class GuardianRestController {
     yondu.setTime(time);
     yondu.setSpeed();
     return yondu;
+  }
+
+  @RequestMapping(value = "/rocket")
+  public GuardianRepository actualCargo() {
+    return rocket;
+  }
+
+  @RequestMapping(value = "/rocket/fill")
+  public GuardianRepository fillCargo(@RequestParam(value = "caliber") String caliber,
+          @RequestParam(value = "amount") int amount) {
+    rocket.fillAmount(caliber, amount);
+    rocket.setCargoStatus();
+    rocket.setReady();
+    rocketFill.setReceived(caliber);
+    rocketFill.setAmount(amount);
+    rocketFill.setShipstatus(amount);
+    rocketFill.setReady();
+    return rocketFill;
   }
 }
