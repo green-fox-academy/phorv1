@@ -15,7 +15,6 @@ public class GuardianRestController {
 
   @Autowired
   ErrorHandling errorHandling;
-  Guardian guardian;
 
   @ExceptionHandler(value = MissingServletRequestParameterException.class)
   public ErrorHandling handleMissingRequestParam() {
