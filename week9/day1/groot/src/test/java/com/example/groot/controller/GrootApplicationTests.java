@@ -71,5 +71,24 @@ public class GrootApplicationTests {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.error", is("Distance or Time cannot be null!")));
   }
+
+  @Test
+  public void testStatusOkRocket() throws Exception {
+    mockMvc.perform(get("/rocket/fill").param("caliber", ".50").param("amount", "1250"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.received", is(".50")))
+            .andExpect(jsonPath("$.amount", is(1250)))
+            .andExpect(jsonPath("$.shipstatus", is("10%")))
+            .andExpect(jsonPath("$.ready", is(false)));
+  }
+
+  @Test
+  public void zeroReceivedAsExpectedRocket() throws Exception {
+    mockMvc.perform(get("/rocket/fill").param("caliber", "").param("amount", ""))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.error", is("Caliber or Amount cannot be null!")));
+  }
+
+
 }
 

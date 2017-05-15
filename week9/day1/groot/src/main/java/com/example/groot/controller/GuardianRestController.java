@@ -58,7 +58,10 @@ public class GuardianRestController {
 
   @RequestMapping(value = "/rocket/fill")
   public GuardianRepository fillCargo(@RequestParam(value = "caliber") String caliber,
-          @RequestParam(value = "amount") int amount) {
+          @RequestParam(value = "amount") Integer amount) {
+    if (caliber == null || amount == null) {
+      return new ErrorHandling("Caliber or Amount cannot be null!");
+    }
     rocket.fillAmount(caliber, amount);
     rocket.setCargoStatus();
     rocket.setReady();
